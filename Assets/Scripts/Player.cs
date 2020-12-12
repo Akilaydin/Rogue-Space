@@ -33,10 +33,11 @@ public class Player : MonoBehaviour
             gameObject.GetComponent<PlayerShooting>().enabled = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftAlt)){ ///////////////DEBUG
+        if (Input.GetKeyDown(KeyCode.LeftAlt)){ ///////////////DEBUG
             Time.timeScale = timeScaleBoost;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        } else if (Input.GetKey(KeyCode.Space)){
+        }
+        if (Input.GetKeyDown(KeyCode.Space)){
             Time.timeScale = 1;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }

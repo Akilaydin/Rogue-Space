@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 198330214428362902}
   - component: {fileID: 199403377841047146}
   m_Layer: 0
-  m_Name: StrongEnemyDeathPS
-  m_TagString: FxTemporaire
+  m_Name: BossSingleDeathPS
+  m_TagString: FXtoDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

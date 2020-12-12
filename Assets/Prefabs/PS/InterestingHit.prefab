@@ -9609,7 +9609,7 @@ GameObject:
   - component: {fileID: 19900004}
   m_Layer: 0
   m_Name: InterestingHit
-  m_TagString: FxTemporaire
+  m_TagString: FXtoDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
