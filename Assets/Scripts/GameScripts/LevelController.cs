@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
@@ -98,7 +99,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     public void GoToMainMenu(){
         //TODO Сделать выход в меню.
-        Debug.Log("Выход в главное меню");
+        SceneManager.LoadScene(0);
         Player.instance.Destruction();
     }
     IEnumerator CreateEnemyWave(float delay, GameObject Wave, bool final)
