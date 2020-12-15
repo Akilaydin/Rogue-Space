@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 250
+  givenScore: 250
   bulletObject: {fileID: 0}
   shotTimeMin: 1
   shotTimeMax: 3
@@ -183,4 +184,4 @@ MonoBehaviour:
   bossParticleDelay: 0.1
   isBonusEnemy: 0
   bonusObjets: []
-  chanceToGenerate: 0
+  chanceToGenerateBonus: 0

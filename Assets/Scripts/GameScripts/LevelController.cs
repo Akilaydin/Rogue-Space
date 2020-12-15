@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -34,6 +35,8 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     [Header("Other Stuff")]
     public GameObject clearScreenBomb;
     private bool isRewardedAddGlobal = false;
+    private Text scoreText;
+    private int totalScore; //Временно здесь, потом перенести в БД.
 
 
     private void Awake()
@@ -50,6 +53,8 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     private void Start()
     {
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        Debug.Log(scoreText.text);
         if (Advertisement.isSupported)
         {
             Advertisement.AddListener(this);
@@ -68,8 +73,6 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         }
     }
 
-
-
     void Update(){
         if (Player.instance.playerHealth <= 0 && isPaused == false){
             addPanel.SetActive(true);
@@ -82,6 +85,10 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
 
     }
 
+    public void ScoreInGame(int score){
+        totalScore += score;
+        scoreText.text = "Очки: "+ totalScore;
+    }
     public void PauseGame(){
         if (isPaused == false){
             isPaused = true;
@@ -98,9 +105,9 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         Debug.Log("Выход в настройки");
     }
     public void GoToMainMenu(){
-        //TODO Сделать выход в меню.
-        SceneManager.LoadScene(0);
         Player.instance.Destruction();
+        SceneManager.LoadScene(0);
+        
     }
     IEnumerator CreateEnemyWave(float delay, GameObject Wave, bool final)
     {

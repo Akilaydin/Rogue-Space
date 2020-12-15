@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
+    public int givenScore;
 
     [Space]
     public GameObject bulletObject;
@@ -97,6 +98,8 @@ public class Enemy : MonoBehaviour
 
     void BossDeath()
     {
+        
+
         float xOffset = Random.Range(-2.5f,2.5f);
         float yOffset = Random.Range(-2.5f,2.5f);
         int particleNum = Random.Range(0,bossDeathPSSPawnArray.Length);
@@ -106,6 +109,7 @@ public class Enemy : MonoBehaviour
             Invoke("BossDeath", bossParticleDelay);
             bossParticleCountIterator++;
         } else {
+            LevelController.instance.ScoreInGame(givenScore);
             Destroy(gameObject);
         }
     }
@@ -113,6 +117,9 @@ public class Enemy : MonoBehaviour
 
 
     private void EnemyDeath(){
+
+        LevelController.instance.ScoreInGame(givenScore);
+
         if (isBonusEnemy && Random.value <= chanceToGenerateBonus){
             Instantiate(bonusObjets[Random.Range(0,bonusObjets.Length)],transform.position,Quaternion.identity);
             Destroy(gameObject);

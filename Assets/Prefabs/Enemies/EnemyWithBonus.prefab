@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 3
+  givenScore: 15
   bulletObject: {fileID: 4201288450153189602, guid: d4d34674622de9f4a99c2b2e002796aa,
     type: 3}
   shotTimeMin: 1
@@ -157,16 +158,19 @@ MonoBehaviour:
   isBoss: 0
   isShootingBoss: 0
   bulletBoss: {fileID: 0}
+  bossDeathPS: {fileID: 0}
   bulletWaves: []
   superShotDelay: 0
   bossChanceShot: 0
   bossWaveChanceShot: 0
+  bossParticleCount: 0
+  bossParticleDelay: 0.1
   isBonusEnemy: 1
   bonusObjets:
   - {fileID: 7911150157073408634, guid: 9a8bf08c9d0aaf948949e256ad97093c, type: 3}
   - {fileID: 7911150157073408634, guid: a9b57b8d766136a489f5548a8d21bd16, type: 3}
   - {fileID: 7911150157073408634, guid: d0d21479f162ec741a7d7d4eded19909, type: 3}
-  chanceToGenerate: 0.5
+  chanceToGenerateBonus: 0
 --- !u!114 &7778842771070815573
 MonoBehaviour:
   m_ObjectHideFlags: 0
