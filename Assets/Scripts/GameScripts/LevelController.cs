@@ -36,7 +36,8 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     public GameObject clearScreenBomb;
     private bool isRewardedAddGlobal = false;
     private Text scoreText;
-    private int totalScore; //Временно здесь, потом перенести в БД.
+    public int totalScore; //Временно здесь, потом перенести в БД.
+    private bool isPausedForSavingScore = false;
 
 
     private void Awake()
@@ -50,21 +51,15 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         {
             Destroy(gameObject);
         }
+       
     }
     private void Start()
     {
+        totalScore = Database.instance.LoadGameScore();
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        Debug.Log(scoreText.text);
-        if (Advertisement.isSupported)
-        {
-            Advertisement.AddListener(this);
-            Advertisement.Initialize("3913797",false);
+        scoreText.text = "Очки: "+ totalScore;
+        CheckAdds();
 
-        } 
-        else if (!Advertisement.isSupported)
-        {
-            Debug.Log("Advertisment isn't supported somehow");
-        }
         // Create all enemy waves...
         for (int i = 0; i < enemyWaves.Length; i++)
         {
@@ -84,10 +79,27 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         }
 
     }
+    
+    #region SavingScoreAfterQuitting
+    void OnApplicationFocus(bool hasFocus)
+    {
+        isPaused = !hasFocus;
+    }
+    void OnApplicationPause(bool pauseStatus)
+    {
+        isPausedForSavingScore = pauseStatus;
+        Database.instance.SaveGameScore();
+    }
+    void OnApplicationQuit()
+    {
+        Database.instance.SaveGameScore();
+    }
+    #endregion
 
     public void ScoreInGame(int score){
         totalScore += score;
         scoreText.text = "Очки: "+ totalScore;
+        Database.instance.SaveGameScore();
     }
     public void PauseGame(){
         if (isPaused == false){
@@ -106,6 +118,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     public void GoToMainMenu(){
         Player.instance.Destruction();
+        PauseGame();
         SceneManager.LoadScene(0);
         
     }
@@ -124,7 +137,19 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
 
 
+    #region AddsLogic
+    private void CheckAdds(){
+        if (Advertisement.isSupported)
+        {
+            Advertisement.AddListener(this);
+            Advertisement.Initialize("3913797",false);
 
+        } 
+        else if (!Advertisement.isSupported)
+        {
+            Debug.Log("Advertisment isn't supported somehow");
+        }
+    }
     public void ShowAdds(bool isRewarded){
         if (Advertisement.IsReady("video") && !isRewarded){
             if (Random.value <= 0.1 ){ //Смотреть рекламу в одном из десяти случаев после смерти.
@@ -188,4 +213,5 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     {
         
     }
+    #endregion
 }
