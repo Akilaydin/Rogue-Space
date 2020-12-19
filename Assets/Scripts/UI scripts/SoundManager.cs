@@ -4,45 +4,47 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private AudioSource[] sources;
-    private int sourceIndex = -1;
+    //
+    //For some reason the script isnt' working while the PlayOnAwake option is checked, so it's important to uncheck this.
+    //I tried to do it programatically, but it didn't work either. 
+    public AudioClip[] clips;
+    private AudioSource source;
+    private int clipIndex;
     private bool anyAudioIsPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
-        sources = GetComponents<AudioSource>();
+        source = GetComponent<AudioSource>();
+        clipIndex = Random.Range(0,clips.Length);
         StartCoroutine(PlaySoundtrack());
-        Debug.Log(sources.Length);
     }
 
     private IEnumerator PlaySoundtrack(){
-        ReverseTheOrderOfSongs();
-        if (CheckIfAnyAudioIsPlaying() == false){
-            Debug.Log("If branch in the PlaySoundThack Coroutine");
-            sourceIndex++;
-            sources[sourceIndex].Play();
-            Debug.Log(sources[sourceIndex].clip.length);
-            yield return new WaitForSeconds (sources[sourceIndex].clip.length);
-        } else {
-            Debug.Log("Else branch in the PlaySoundThack Coroutine");
-            yield return new WaitForSeconds (15);
+        while(true)
+        {
+            if (CheckIfAnyAudioIsPlaying() == false){
+                Debug.Log(clipIndex);
+                ReverseTheOrderOfSongs();
+                source.clip = clips[clipIndex];
+                clipIndex++;
+                source.Play();
+                yield return new WaitForSeconds (source.clip.length);
+        }   else {
+                yield return new WaitForSeconds (5f);
+            }
         }
     }
 
     private bool CheckIfAnyAudioIsPlaying(){
-        foreach (var source in sources){
-            if (source.isPlaying)
+            if (source.isPlaying){
                 anyAudioIsPlaying = true;
         }
         return anyAudioIsPlaying;
     }
 
     private void ReverseTheOrderOfSongs(){
-        if (sourceIndex > sources.Length){
-            sourceIndex = 0;
+        if (clipIndex > clips.Length){
+            clipIndex = 0;
         }
     }
-
-
-    
 }
