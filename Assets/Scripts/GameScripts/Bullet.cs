@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D coll){
-        if (isEnemyBullet && coll.tag == "Player"){
+        if (isEnemyBullet && coll.tag == "Player" && Player.instance.isInvincible == false){
             Player.instance.GetDamage(damage);
             Destroy(gameObject);
         }
@@ -18,5 +18,9 @@ public class Bullet : MonoBehaviour
             coll.GetComponent<Enemy>().GetDamage(damage);
             Destroy(gameObject);
         }
+    }
+
+    public void Destruction(){
+        Destroy(gameObject);
     }
 }

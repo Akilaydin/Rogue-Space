@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2013301154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2013301155}
+  - component: {fileID: 2013301157}
+  - component: {fileID: 2013301156}
+  m_Layer: 0
+  m_Name: PlayerCleanerAfterInvincibility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2013301155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013301154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6722210533864822044}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2013301157
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013301154}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.036503434, y: 0.02223587}
+  serializedVersion: 2
+  m_Radius: 1.2555274
+--- !u!114 &2013301156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013301154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99aa36937f8b9446856d01311af1990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6722210532379957510
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,47 +153,6 @@ Transform:
   m_Father: {fileID: 6722210533864822044}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12}
---- !u!68 &6722210532848041939
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6722210533875633230}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.9680445, y: -0.3678204}
-  - {x: -0.8100074, y: 0.18281128}
-  - {x: -0.5867809, y: 0.5093826}
-  - {x: -0.28145623, y: 0.73449326}
-  - {x: -0.044608273, y: 0.8122702}
-  - {x: 0.31192103, y: 0.74220806}
-  - {x: 0.4642681, y: 0.64664626}
-  - {x: 0.811062, y: 0.28515416}
-  - {x: 0.9833709, y: -0.36782026}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!114 &6722210532848041938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6722210533875633230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9816fbfe41a561f4ea5d283b73128900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6722210532972140127
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +286,7 @@ Transform:
   - {fileID: 6722210533587797604}
   - {fileID: 6722210532972140124}
   - {fileID: 6722210533875633231}
+  - {fileID: 2013301155}
   m_Father: {fileID: 6722210532379957511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -434,9 +454,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 5
   maxHealth: 5
+  invincibilityDuration: 1.5
+  isInvincible: 0
+  isCleaningBullets: 0
+  playerCleanAfterInvincibility: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f,
+    type: 3}
   smallSizeMultiplier: 0.35
   timeScaleBoost: 5
   addPanel: {fileID: 0}
+--- !u!68 &6722210532848041939
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722210533875633230}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.9680445, y: -0.3678204}
+  - {x: -0.8100074, y: 0.18281128}
+  - {x: -0.5867809, y: 0.5093826}
+  - {x: -0.28145623, y: 0.73449326}
+  - {x: -0.044608273, y: 0.8122702}
+  - {x: 0.31192103, y: 0.74220806}
+  - {x: 0.4642681, y: 0.64664626}
+  - {x: 0.811062, y: 0.28515416}
+  - {x: 0.9833709, y: -0.36782026}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &6722210532848041938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722210533875633230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9816fbfe41a561f4ea5d283b73128900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6722210533892985773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,15 +5592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 173e0cec5cf57384585fa5df87c1b174, type: 3}
---- !u!198 &7340638394368843319 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4077228153942627930, guid: 173e0cec5cf57384585fa5df87c1b174,
-    type: 3}
-  m_PrefabInstance: {fileID: 6722210533707745389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7452989720958621527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189544423398989626, guid: 173e0cec5cf57384585fa5df87c1b174,
+    type: 3}
+  m_PrefabInstance: {fileID: 6722210533707745389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7340638394368843319 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4077228153942627930, guid: 173e0cec5cf57384585fa5df87c1b174,
     type: 3}
   m_PrefabInstance: {fileID: 6722210533707745389}
   m_PrefabAsset: {fileID: 0}

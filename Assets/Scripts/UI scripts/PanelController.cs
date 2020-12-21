@@ -8,6 +8,10 @@ public class PanelController : MonoBehaviour
 {
     public GameObject[] panels;
     public Slider loadingSlider;
+
+    void Start(){
+        HideAllPanels();
+    }
     public void ShowPanel(int panelIndex){
         panels[panelIndex].SetActive(true);
     }
