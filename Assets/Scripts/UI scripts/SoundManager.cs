@@ -23,7 +23,6 @@ public class SoundManager : MonoBehaviour
         while(true)
         {
             if (CheckIfAnyAudioIsPlaying() == false){
-                Debug.Log(clipIndex);
                 ReverseTheOrderOfSongs();
                 source.clip = clips[clipIndex];
                 clipIndex++;
