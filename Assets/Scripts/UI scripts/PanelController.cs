@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PanelController : MonoBehaviour
 {
     public GameObject[] panels;
+    public Slider loadingSlider;
     public void ShowPanel(int panelIndex){
         panels[panelIndex].SetActive(true);
     }
@@ -26,6 +27,16 @@ public class PanelController : MonoBehaviour
     }
 
     public void LaunchGame(){
-        SceneManager.LoadScene(1);
+        StartCoroutine(loadLevelAsync(1));
+    }
+
+    IEnumerator loadLevelAsync(int sceneIndex){
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        while (loadOperation.isDone == false){
+            float loadProgress = Mathf.Clamp01(loadOperation.progress / 0.9f);
+            loadingSlider.value = loadProgress;
+            yield return null;
+        }
     }
 }
