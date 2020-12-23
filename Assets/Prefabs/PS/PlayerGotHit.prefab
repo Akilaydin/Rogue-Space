@@ -14338,5 +14338,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Delay: 0
-  MaximumStress: 0.2
+  MaximumStress: 0.4
   Range: 45
