@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    private Text scoreText;
+    private Text scoreText, signInText;
+    private bool isSignedIn = false;
 
     void Start()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        signInText = GameObject.Find("SignInText").GetComponent<Text>();
         RefreshScore();
     }
 
     private void RefreshScore(){
         scoreText.text = Database.instance.LoadGameScore().ToString();
     }
+
+    
 }

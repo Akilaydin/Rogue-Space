@@ -25,11 +25,6 @@ public class PanelController : MonoBehaviour
             panel.SetActive(false);
         }
     }
-
-    public void ExitApp(){
-        Application.Quit();
-    }
-
     public void LaunchGame(){
         StartCoroutine(loadLevelAsync(1));
     }
