@@ -8,24 +8,31 @@ using UnityEngine.UI;
 
 [System.Serializable]
 public class EnemyWaves {
-     // Time when the wave will appear on the stage
-    public float timeToStart;
     // The Enemy Wave prefab to be spawned.
-    public GameObject wave;
-    // This wave after which the game will end.
-    public bool is_Last_Wave;
-
+    public GameObject enemyWave;
+    public GameObject shootingBossWave;
+    public GameObject bossWave;
 }
+
+
 
 public class LevelController : MonoBehaviour, IUnityAdsListener
 {
-    // Static reference to the LevelController (can be used in other scripts).
     public static LevelController instance;
-    //Array of player ships
-    public GameObject[] playerShip;
-    // Reference to the EnemyWaves.
     public EnemyWaves[] enemyWaves;
-    private bool isFinal = false; 
+    public EnemyWaves bossWave;
+
+    [Header("Wave settings")]
+
+    [SerializeField]
+    private int countToSpawnNewWave = 2;
+    [SerializeField]
+    private float delayBetweenWaves = 3;
+    [SerializeField]
+    private float delayBetweenShootingBossWaves = 10;
+    private int enemyWaveIndex = 0;
+    public bool isBossFight = false;
+    
 
     public GameObject pausePanel;
     public GameObject addPanel;
@@ -36,13 +43,12 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     public GameObject clearScreenBomb;
     private bool isRewardedAddGlobal = false;
     private Text scoreText;
-    public int totalScore; //Временно здесь, потом перенести в БД.
+    public int totalScore;
     private bool isPausedForSavingScore = false;
 
 
     private void Awake()
     {
-        // Setting up the references.
         if (instance == null)
         {
             instance = this;
@@ -51,7 +57,6 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         {
             Destroy(gameObject);
         }
-       
     }
     private void Start()
     {
@@ -59,27 +64,72 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         scoreText.text = "Очки: "+ totalScore;
         CheckAdds();
-
-        // Create all enemy waves...
-        for (int i = 0; i < enemyWaves.Length; i++)
-        {
-            // Start CreateEnemyWave as a coroutine.
-            StartCoroutine(CreateEnemyWave(enemyWaves[i].timeToStart, enemyWaves[i].wave, enemyWaves[i].is_Last_Wave));
-        }
+        StartCoroutine(CreateEnemyWaves());
+        StartCoroutine(CreateShootingBossWaves());
     }
 
     void Update(){
         if (Player.instance.playerHealth <= 0 && isPaused == false){
             addPanel.SetActive(true);
-            Time.timeScale = 0;
-        }
-        if (isFinal && GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && isPaused == false){
-            Debug.Log("Win");
             PauseGame();
         }
+        
+    }
 
+    IEnumerator CreateEnemyWaves()
+    { 
+        while (true){
+            
+            CheckIfEnemyIndexIsTooBig();
+
+            if (Player.instance != null && AreThereEnemiesAlive() == false && isBossFight == false){
+                CheckIfEnemyIndexIsTooBig();
+                Instantiate(enemyWaves[enemyWaveIndex].enemyWave);
+                enemyWaveIndex++;
+                yield return new WaitForSeconds(delayBetweenWaves);
+            }
+
+            if (enemyWaveIndex > enemyWaves.Length - 1 && isBossFight == false){
+                CheckIfEnemyIndexIsTooBig();
+                Instantiate(bossWave.bossWave);
+                isBossFight = true;
+            }
+            
+        }
+        
+    }
+    private void CheckIfEnemyIndexIsTooBig(){
+        if (enemyWaveIndex >= enemyWaves.Length){
+                Debug.Log("Im in if enemy>index" + "Index is " + enemyWaveIndex + "And length is " + enemyWaves.Length);
+                enemyWaveIndex = Random.Range(0,enemyWaves.Length - 1);
+                Debug.Log("After random index becomes " + enemyWaveIndex);
+            }
     }
     
+    private bool AreThereEnemiesAlive(){ //Returns true if there are more than 1 enemy alive. Returns false in the opposite variant.
+        if (GameObject.FindObjectsOfType<Enemy>().Length <= countToSpawnNewWave) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    IEnumerator CreateShootingBossWaves()
+    { 
+        
+        while (true){
+            
+
+            if (Player.instance != null && isBossFight == false){
+                Instantiate(bossWave.shootingBossWave);
+                yield return new WaitForSeconds(delayBetweenShootingBossWaves);
+            }
+            
+        }
+        
+    }
+
+
     #region SavingScoreAfterQuitting
     void OnApplicationFocus(bool hasFocus)
     {
@@ -96,11 +146,13 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     #endregion
 
+    #region  Score,Pause, menu logic 
     public void ScoreInGame(int score){
         totalScore += score;
         scoreText.text = "Очки: "+ totalScore;
         Database.instance.SaveGameScore();
     }
+
     public void PauseGame(){
         if (isPaused == false){
             isPaused = true;
@@ -122,21 +174,9 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         SceneManager.LoadScene(0);
         
     }
-    IEnumerator CreateEnemyWave(float delay, GameObject Wave, bool final)
-    {
-        // if creation wave time ! = 0 and player is alive ...create a wave
-        if (delay != 0){
-            yield return new WaitForSeconds(delay);
-        }
-        if (Player.instance != null){
-            Instantiate(Wave);
-        }
-        if (final == true){
-            isFinal = true;
-        }
-    }
-
-
+    
+    #endregion
+    
     #region AddsLogic
     private void CheckAdds(){
         if (Advertisement.isSupported)

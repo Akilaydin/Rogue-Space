@@ -98,8 +98,6 @@ public class Enemy : MonoBehaviour
 
     void BossDeath()
     {
-        
-
         float xOffset = Random.Range(-2.5f,2.5f);
         float yOffset = Random.Range(-2.5f,2.5f);
         int particleNum = Random.Range(0,bossDeathPSSPawnArray.Length);
@@ -110,6 +108,7 @@ public class Enemy : MonoBehaviour
             bossParticleCountIterator++;
         } else {
             LevelController.instance.ScoreInGame(givenScore);
+            LevelController.instance.isBossFight = false;
             Destroy(gameObject);
         }
     }

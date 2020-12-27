@@ -19,11 +19,16 @@ public class Player : MonoBehaviour
     private SpriteRenderer playerRenderer;
 
     [Header("Tricks for testing")]
-    public float smallSizeMultiplier;
-    public int timeScaleBoost;
+    [SerializeField]
+    private float smallSizeMultiplier;
+    [SerializeField]
+    private int timeScaleBoost;
+    [SerializeField]
+    private GameObject bombToClearTheScreen;
 
     [Header("UI")]
-    public GameObject addPanel;
+    [SerializeField]
+    private GameObject addPanel;
     private Slider hpSliderPlayer;
     private Slider shieldSliderPlayer;
     
@@ -61,19 +66,23 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift)){     /////////////DEBUG
             transform.localScale = new Vector3(1 * smallSizeMultiplier, 1* smallSizeMultiplier, 1 * smallSizeMultiplier);
             gameObject.GetComponent<PlayerShooting>().enabled = false;
-        } else if (!Input.GetKey(KeyCode.LeftShift)){
+        } else if (!Input.GetKey(KeyCode.LeftShift)){ ///////////////DEBUG
             transform.localScale = Vector3.one;
             gameObject.GetComponent<PlayerShooting>().enabled = true;
-        }                                       ///////////////DEBUG
+        }                                       
 
         if (Input.GetKeyDown(KeyCode.LeftAlt)){ ///////////////DEBUG
             Time.timeScale = timeScaleBoost;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space)){ ///////////////DEBUG
             Time.timeScale = 1;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        }                                       ///////////////DEBUG
+        }                                       
+
+        if (Input.GetKeyDown(KeyCode.B)){
+            Instantiate(bombToClearTheScreen,transform.position,Quaternion.identity); ///////////////DEBUG
+        }     
     }
 
     public void GetDamage(int damage){

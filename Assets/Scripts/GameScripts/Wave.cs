@@ -34,7 +34,10 @@ public class Wave : MonoBehaviour
     }
 
     public void SetEnemyActive(){
-        newEnemy.SetActive(true);
+        if (newEnemy != null){
+            newEnemy.SetActive(true);
+        }
+        
     }
 
     IEnumerator CreateEnemyWave(){
