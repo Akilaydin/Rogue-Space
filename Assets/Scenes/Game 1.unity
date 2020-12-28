@@ -3543,7 +3543,7 @@ MonoBehaviour:
       type: 3}
     bossWave: {fileID: 5699672492420533478, guid: 9ea53dae075e98d48a1be2baed6f71ab,
       type: 3}
-  countToSpawnNewWave: 2
+  countToSpawnNewWave: 1
   delayBetweenWaves: 3
   delayBetweenShootingBossWaves: 10
   isBossFight: 0

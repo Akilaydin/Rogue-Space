@@ -60,7 +60,10 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     private void Start()
     {
-        totalScore = Database.instance.LoadGameScore();
+        if (Database.instance.LoadGameScore() > 0){
+            totalScore = Database.instance.LoadGameScore();
+        }
+        
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         scoreText.text = "Очки: "+ totalScore;
         CheckAdds();
@@ -81,7 +84,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         while (true){
             
             CheckIfEnemyIndexIsTooBig();
-
+            CheckIsBossFight();
             if (Player.instance != null && AreThereEnemiesAlive() == false && isBossFight == false){
                 CheckIfEnemyIndexIsTooBig();
                 Instantiate(enemyWaves[enemyWaveIndex].enemyWave);
@@ -94,7 +97,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
                 Instantiate(bossWave.bossWave);
                 isBossFight = true;
             }
-            
+            yield return new WaitForSeconds(1);
         }
         
     }
@@ -105,7 +108,13 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
                 Debug.Log("After random index becomes " + enemyWaveIndex);
             }
     }
-    
+    private void CheckIsBossFight(){
+        if (GameObject.FindObjectsOfType<BossScript>().Length > 0){
+            isBossFight = true;
+        } else {
+            isBossFight = false;
+        }
+    }
     private bool AreThereEnemiesAlive(){ //Returns true if there are more than 1 enemy alive. Returns false in the opposite variant.
         if (GameObject.FindObjectsOfType<Enemy>().Length <= countToSpawnNewWave) {
             return false;
@@ -116,19 +125,19 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
 
     IEnumerator CreateShootingBossWaves()
     { 
-        
         while (true){
-            
-
+            CheckIsBossFight();
             if (Player.instance != null && isBossFight == false){
                 Instantiate(bossWave.shootingBossWave);
                 yield return new WaitForSeconds(delayBetweenShootingBossWaves);
+            } else{
+                yield return new WaitForSeconds(2);
             }
             
-        }
-        
+        } 
     }
 
+    
 
     #region SavingScoreAfterQuitting
     void OnApplicationFocus(bool hasFocus)
@@ -143,6 +152,8 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     void OnApplicationQuit()
     {
         Database.instance.SaveGameScore();
+        StopAllCoroutines();
+    
     }
     #endregion
 

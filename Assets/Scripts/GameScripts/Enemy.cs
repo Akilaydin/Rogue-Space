@@ -108,7 +108,6 @@ public class Enemy : MonoBehaviour
             bossParticleCountIterator++;
         } else {
             LevelController.instance.ScoreInGame(givenScore);
-            LevelController.instance.isBossFight = false;
             Destroy(gameObject);
         }
     }
