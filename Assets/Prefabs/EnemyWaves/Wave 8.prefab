@@ -82,10 +82,11 @@ MonoBehaviour:
     shotChance: 0
     shotTimeMin: 2
     shotTimeMax: 5
-  enemyObj: {fileID: 5081282368917784196, guid: 53d04cabcdd70234abadb1effca086ce, type: 3}
+  enemyObj: {fileID: 5081282368917784196, guid: 53d04cabcdd70234abadb1effca086ce,
+    type: 3}
   countInWave: 10
-  enemySpeed: 15
-  spawnTimeDelay: 0.5
+  enemySpeed: 10
+  spawnTimeDelay: 0.7
   pathPoints:
   - {fileID: 5699672493959581026}
   - {fileID: 5699672493618102691}
@@ -93,7 +94,6 @@ MonoBehaviour:
   - {fileID: 5699672494069147209}
   - {fileID: 7579868869459907038}
   isReturn: 1
-  isTest: 0
 --- !u!1 &5699672493618102690
 GameObject:
   m_ObjectHideFlags: 0

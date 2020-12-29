@@ -49,6 +49,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
 
     private void Awake()
     {
+        Time.timeScale = 1;
         if (instance == null)
         {
             instance = this;
@@ -74,9 +75,8 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     void Update(){
         if (Player.instance.playerHealth <= 0 && isPaused == false){
             addPanel.SetActive(true);
-            PauseGame();
+            Time.timeScale = 0; //Not PauseGame() cause I dont want to double pause menu.
         }
-        
     }
 
     IEnumerator CreateEnemyWaves()
@@ -181,7 +181,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     }
     public void GoToMainMenu(){
         Player.instance.Destruction();
-        PauseGame();
+        Time.timeScale = 0;
         SceneManager.LoadScene(0);
         
     }

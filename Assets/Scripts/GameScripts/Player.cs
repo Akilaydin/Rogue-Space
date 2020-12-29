@@ -33,12 +33,6 @@ public class Player : MonoBehaviour
     private Slider shieldSliderPlayer;
     
 
-
-
-
-    
-
-
     void Awake(){
         if (instance == null){
             instance = this;
@@ -46,10 +40,6 @@ public class Player : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-
-        
-
-
     }
 
     void Start(){

@@ -1017,6 +1017,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &400224585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400224586}
+  m_Layer: 0
+  m_Name: StartSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400224586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400224585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &403016135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,12 +1776,11 @@ PrefabInstance:
       propertyPath: addPanel
       value: 
       objectReference: {fileID: 802920319}
-    - target: {fileID: 6722210533864822043, guid: 3dabacc6fe7dfad4183197b32fda9e47,
+    - target: {fileID: 6722210533864822046, guid: 3dabacc6fe7dfad4183197b32fda9e47,
         type: 3}
-      propertyPath: bombToClearTheScreen
-      value: 
-      objectReference: {fileID: 7361535198530422220, guid: da4a857d01b2d164d835c580aa7a0ffd,
-        type: 3}
+      propertyPath: playerSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dabacc6fe7dfad4183197b32fda9e47, type: 3}
 --- !u!1 &901176137

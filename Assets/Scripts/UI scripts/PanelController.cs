@@ -31,7 +31,6 @@ public class PanelController : MonoBehaviour
 
     IEnumerator loadLevelAsync(int sceneIndex){
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneIndex);
-
         while (loadOperation.isDone == false){
             float loadProgress = Mathf.Clamp01(loadOperation.progress / 0.9f);
             loadingSlider.value = loadProgress;

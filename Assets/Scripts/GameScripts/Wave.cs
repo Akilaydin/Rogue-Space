@@ -22,10 +22,6 @@ public class Wave : MonoBehaviour
     public bool isReturn; //Уничтожается ли враг, после того как он пересек последнюю точку пути
     private GameObject newEnemy;
 
-    //Test Wave
-    [Header("TestWave")]
-    public bool isTest;
-
     private PathFollowing followComponent;
     private Enemy enemyComponentScript;
 
@@ -41,6 +37,7 @@ public class Wave : MonoBehaviour
     }
 
     IEnumerator CreateEnemyWave(){
+
         for (int i = 0; i < countInWave; i++){
             newEnemy = Instantiate(enemyObj,enemyObj.transform.position,Quaternion.identity); //Создаем нового врага и даем на него ссылку
             followComponent = newEnemy.GetComponent<PathFollowing>(); //Находим у нового врага PathFollowing и передадим туда точки перемещения врага, скорость и переменную на возврат в начало пути
@@ -53,13 +50,7 @@ public class Wave : MonoBehaviour
             enemyComponentScript.shotTimeMin = shootingSettings.shotTimeMin;
             enemyComponentScript.shotTimeMax = shootingSettings.shotTimeMax;
 
-            Invoke("SetEnemyActive",0.7f);
             yield return new WaitForSeconds(spawnTimeDelay);
-
-        }
-        if (isTest){
-            yield return new WaitForSeconds(5f); //Если тест, то создаем волну каждые 5 секунд
-            StartCoroutine(CreateEnemyWave());
         }
 
         if (!isReturn){
@@ -78,7 +69,6 @@ public class Wave : MonoBehaviour
         }
         path_positions = Smoothing(path_positions);
         path_positions = Smoothing(path_positions);
-        //path_positions = Smoothing(path_positions);
         for (int i = 0; i < path_positions.Length - 1; i++){
             Gizmos.DrawLine(path_positions[i], path_positions[i + 1]);
         }

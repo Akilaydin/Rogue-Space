@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4201288450153189602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 5.11, z: 0}
-  m_LocalScale: {x: 1.2, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isEnemyBullet: 0
-  playerBulletPS: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!114 &4201288450153189608
 MonoBehaviour:
   m_ObjectHideFlags: 0
