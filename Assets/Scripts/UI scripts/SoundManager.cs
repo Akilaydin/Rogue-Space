@@ -15,34 +15,42 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        clipIndex = Random.Range(0,clips.Length);
+        clipIndex = Random.Range(0, clips.Length);
         StartCoroutine(PlaySoundtrack());
     }
 
-    private IEnumerator PlaySoundtrack(){
-        while(true)
+    private IEnumerator PlaySoundtrack()
+    {
+        while (true)
         {
-            if (CheckIfAnyAudioIsPlaying() == false){
+            if (CheckIfAnyAudioIsPlaying() == false)
+            {
                 ReverseTheOrderOfSongs();
                 source.clip = clips[clipIndex];
                 clipIndex++;
                 source.Play();
-                yield return new WaitForSeconds (source.clip.length);
-        }   else {
-                yield return new WaitForSeconds (5f);
+                yield return new WaitForSeconds(source.clip.length);
+            }
+            else
+            {
+                yield return new WaitForSeconds(5f);
             }
         }
     }
 
-    private bool CheckIfAnyAudioIsPlaying(){
-            if (source.isPlaying){
-                anyAudioIsPlaying = true;
+    private bool CheckIfAnyAudioIsPlaying()
+    {
+        if (source.isPlaying)
+        {
+            anyAudioIsPlaying = true;
         }
         return anyAudioIsPlaying;
     }
 
-    private void ReverseTheOrderOfSongs(){
-        if (clipIndex > clips.Length){
+    private void ReverseTheOrderOfSongs()
+    {
+        if (clipIndex > clips.Length)
+        {
             clipIndex = 0;
         }
     }

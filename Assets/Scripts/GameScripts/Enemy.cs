@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     [Space]
     public GameObject bulletObject;
-    public float shotTimeMin,shotTimeMax; //Нужно, чтобы враг не стрелял тогда, когда игрок его не видит.
+    public float shotTimeMin, shotTimeMax; //Нужно, чтобы враг не стрелял тогда, когда игрок его не видит.
     public int shotChance; //Переменная для шанса на стрельбу
     public ParticleSystem enemyDeathPS, PlayerBulletPS;
 
@@ -32,63 +32,81 @@ public class Enemy : MonoBehaviour
     [Header("BonusEnemy")]
     public bool isBonusEnemy = false;
     public GameObject[] bonusObjets;
-    [Range(0,1)]
+    [Range(0, 1)]
     public float chanceToGenerateBonus;
 
 
-    void Update(){
-        if (isBoss){
-            if (Time.time > bossTimerShot){
+    void Update()
+    {
+        if (isBoss)
+        {
+            if (Time.time > bossTimerShot)
+            {
                 bossTimerShot = Time.time + superShotDelay;
                 OpenFire();
                 OpenFireBoss();
             }
-        } 
+        }
     }
 
-    void Start(){
-        if (isShootingBoss){
-            Invoke("OpenFireBoss",1);
+    void Start()
+    {
+        if (isShootingBoss)
+        {
+            Invoke("OpenFireBoss", 1);
         }
-        if (isBoss){
+        if (isBoss)
+        {
             bossDeathPSSPawnArray = bossDeathPS.GetComponentsInChildren<ParticleSystem>();
         }
-        if (!isBoss){
-            InvokeRepeating("OpenFire",Random.Range(shotTimeMin,shotTimeMax),3f);
+        if (!isBoss)
+        {
+            InvokeRepeating("OpenFire", Random.Range(shotTimeMin, shotTimeMax), 3f);
         }
     }
 
 
-    void OpenFireBoss(){
-        if ((Random.value < (float) bossWaveChanceShot / 100) && isBoss) {
-            Instantiate(bulletWaves[Random.Range(0,bulletWaves.Length)],transform.position,Quaternion.identity);
+    void OpenFireBoss()
+    {
+        if ((Random.value < (float)bossWaveChanceShot / 100) && isBoss)
+        {
+            Instantiate(bulletWaves[Random.Range(0, bulletWaves.Length)], transform.position, Quaternion.identity);
         }
-        if ((Random.value < (float) bossChanceShot / 100) && isBoss){
-            for (int zZz = -40; zZz< 40; zZz += 10){
-                Instantiate(bulletBoss,transform.position,Quaternion.Euler(0,0,zZz));
+        if ((Random.value < (float)bossChanceShot / 100) && isBoss)
+        {
+            for (int zZz = -40; zZz < 40; zZz += 10)
+            {
+                Instantiate(bulletBoss, transform.position, Quaternion.Euler(0, 0, zZz));
             }
-        } 
-        else if (isShootingBoss){
-            for (int zZz = -40; zZz< 40; zZz += 10){
-                Instantiate(bulletBoss,transform.position,Quaternion.Euler(0,0,zZz));
+        }
+        else if (isShootingBoss)
+        {
+            for (int zZz = -40; zZz < 40; zZz += 10)
+            {
+                Instantiate(bulletBoss, transform.position, Quaternion.Euler(0, 0, zZz));
             }
         }
     }
 
 
-    void OpenFire(){
-        if (Random.value < (float)shotChance / 100) { //Шанс на стрельбу
-            Instantiate(bulletObject,transform.position,Quaternion.identity);
+    void OpenFire()
+    {
+        if (Random.value < (float)shotChance / 100)
+        { //Шанс на стрельбу
+            Instantiate(bulletObject, transform.position, Quaternion.identity);
         }
     }
 
 
-    public void GetDamage(int damage){
+    public void GetDamage(int damage)
+    {
         enemyHealth -= damage;
-        if (enemyHealth > 0){ //Чтобы взрыв от пули не призывался, если враг умирает, чтобы вместо этого призвать эффект смерти врага.
-            Instantiate(PlayerBulletPS,transform.position,Quaternion.identity);
+        if (enemyHealth > 0)
+        { //Чтобы взрыв от пули не призывался, если враг умирает, чтобы вместо этого призвать эффект смерти врага.
+            Instantiate(PlayerBulletPS, transform.position, Quaternion.identity);
         }
-        if (enemyHealth <= 0) {
+        if (enemyHealth <= 0)
+        {
             EnemyDeath();
         }
 
@@ -98,15 +116,18 @@ public class Enemy : MonoBehaviour
 
     void BossDeath()
     {
-        float xOffset = Random.Range(-2.5f,2.5f);
-        float yOffset = Random.Range(-2.5f,2.5f);
-        int particleNum = Random.Range(0,bossDeathPSSPawnArray.Length);
+        float xOffset = Random.Range(-2.5f, 2.5f);
+        float yOffset = Random.Range(-2.5f, 2.5f);
+        int particleNum = Random.Range(0, bossDeathPSSPawnArray.Length);
 
-        if (bossParticleCountIterator < bossParticleCount){
-            Instantiate(bossDeathPSSPawnArray[particleNum],new Vector2(transform.position.x + xOffset,transform.position.y + yOffset),Quaternion.identity);
+        if (bossParticleCountIterator < bossParticleCount)
+        {
+            Instantiate(bossDeathPSSPawnArray[particleNum], new Vector2(transform.position.x + xOffset, transform.position.y + yOffset), Quaternion.identity);
             Invoke("BossDeath", bossParticleDelay);
             bossParticleCountIterator++;
-        } else {
+        }
+        else
+        {
             LevelController.instance.ScoreInGame(givenScore);
             Destroy(gameObject);
         }
@@ -114,28 +135,34 @@ public class Enemy : MonoBehaviour
 
 
 
-    private void EnemyDeath(){
+    private void EnemyDeath()
+    {
 
         LevelController.instance.ScoreInGame(givenScore);
 
-        if (isBonusEnemy && Random.value <= chanceToGenerateBonus){
-            Instantiate(bonusObjets[Random.Range(0,bonusObjets.Length)],transform.position,Quaternion.identity);
+        if (isBonusEnemy && Random.value <= chanceToGenerateBonus)
+        {
+            Instantiate(bonusObjets[Random.Range(0, bonusObjets.Length)], transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        if (!isBoss){
-            Instantiate(enemyDeathPS,transform.position,Quaternion.identity);
+        if (!isBoss)
+        {
+            Instantiate(enemyDeathPS, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        if (isBoss || isShootingBoss){ //Проверка на стреляющего босса(который появляется периодически в верху экрана), дабы избежать багов.
+        if (isBoss || isShootingBoss)
+        { //Проверка на стреляющего босса(который появляется периодически в верху экрана), дабы избежать багов.
             gameObject.GetComponent<Enemy>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<PathFollowing>().enabled = false;
             BossDeath();
         }
-        
+
     }
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.tag == "Player"){
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
+        {
             GetDamage(1);
             Player.instance.GetDamage(1);
         }

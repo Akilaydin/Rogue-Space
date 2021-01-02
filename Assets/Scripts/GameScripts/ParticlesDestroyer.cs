@@ -17,12 +17,14 @@ public class ParticlesDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    IEnumerator ParticleFinderAndDestroyer(){ //Сначала находим GO со спец. тэгом, потом вытаскиваем из них партикл системы, проверяем, проигрываются они или нет, и уничтожаем, если нет.
+    IEnumerator ParticleFinderAndDestroyer()
+    { //Сначала находим GO со спец. тэгом, потом вытаскиваем из них партикл системы, проверяем, проигрываются они или нет, и уничтожаем, если нет.
         List<ParticleSystem> particles = new List<ParticleSystem>();
-        while (true){
+        while (true)
+        {
             goParticles = GameObject.FindGameObjectsWithTag("FXtoDestroy");//go stands for GameObject
             particles = GetParticlesFromGameObject(goParticles);
             DestroyParticles(particles);
@@ -30,17 +32,22 @@ public class ParticlesDestroyer : MonoBehaviour
         }
     }
 
-    List<ParticleSystem> GetParticlesFromGameObject(GameObject[] goParticles){
+    List<ParticleSystem> GetParticlesFromGameObject(GameObject[] goParticles)
+    {
         List<ParticleSystem> particles = new List<ParticleSystem>();
-        foreach(var goParticle in goParticles){ //go stands for GameObject
+        foreach (var goParticle in goParticles)
+        { //go stands for GameObject
             particles.Add(goParticle.GetComponent<ParticleSystem>());
         }
         return particles;
     }
 
-    void DestroyParticles(List<ParticleSystem> particles){
-        foreach (var particle in particles){
-            if (particle.isPlaying == false){
+    void DestroyParticles(List<ParticleSystem> particles)
+    {
+        foreach (var particle in particles)
+        {
+            if (particle.isPlaying == false)
+            {
                 Destroy(particle.gameObject);
             }
         }

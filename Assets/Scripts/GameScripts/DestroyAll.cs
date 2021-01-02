@@ -7,24 +7,29 @@ public class DestroyAll : MonoBehaviour
     private BoxCollider2D boundCollider; //Ссылка на наш бокс коллайдер
     private Vector2 viewPortSize; //Размеры камеры
 
-    private void Awake(){
+    private void Awake()
+    {
         boundCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void Start(){
+    private void Start()
+    {
         ResizeCollider();
     }
 
-    void ResizeCollider(){
-        viewPortSize = Camera.main.ViewportToWorldPoint(new Vector2(1,1) * 2); //Здесь получаем размер, я не совсем понимаю, как это работает.
+    void ResizeCollider()
+    {
+        viewPortSize = Camera.main.ViewportToWorldPoint(new Vector2(1, 1) * 2); //Здесь получаем размер, я не совсем понимаю, как это работает.
         viewPortSize.x *= 1.5f;
         viewPortSize.y *= 1.5f;
 
         boundCollider.size = viewPortSize;
     }
 
-    public void OnTriggerExit2D(Collider2D coll){
-        switch(coll.tag){
+    public void OnTriggerExit2D(Collider2D coll)
+    {
+        switch (coll.tag)
+        {
             case "Planet":
                 Destroy(coll.gameObject);
                 break;

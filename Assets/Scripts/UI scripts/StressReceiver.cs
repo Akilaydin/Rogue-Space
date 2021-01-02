@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StressReceiver : MonoBehaviour 
+public class StressReceiver : MonoBehaviour
 {
     private float _trauma;
     private Vector3 _lastPosition;
@@ -16,7 +16,7 @@ public class StressReceiver : MonoBehaviour
     {
         float shake = Mathf.Pow(_trauma, TraumaExponent);
         /* Only apply this when there is active trauma */
-        if(shake > 0)
+        if (shake > 0)
         {
             var previousRotation = _lastRotation;
             var previousPosition = _lastPosition;

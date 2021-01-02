@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Bonus : MonoBehaviour
 {
-    
+
     public float shieldLasting = 4f;
     public ParticleSystem bombPS;
     private float shieldDec;
@@ -14,29 +14,34 @@ public class Bonus : MonoBehaviour
     private Slider shieldUISlider;
     private Slider hpUISlider;
 
-    void Start(){
+    void Start()
+    {
         shieldSprite = GameObject.FindGameObjectWithTag("ShieldSprite");
         shieldUISlider = GameObject.FindGameObjectWithTag("Shield_UI").GetComponent<Slider>();
         hpUISlider = GameObject.FindGameObjectWithTag("HP_UI").GetComponent<Slider>();
     }
-    private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.tag == "Player"){
-            
-            switch(gameObject.tag){
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+
+            switch (gameObject.tag)
+            {
                 case "Guns":
-                    if (PlayerShooting.instance.currentLevelOfGuns < PlayerShooting.instance.maxLevelOfGuns){
+                    if (PlayerShooting.instance.currentLevelOfGuns < PlayerShooting.instance.maxLevelOfGuns)
+                    {
                         PlayerShooting.instance.currentLevelOfGuns++;
                     }
-                break;
+                    break;
 
                 case "Shield":
                     shieldSprite.GetComponent<EdgeCollider2D>().enabled = true;
                     shieldSprite.GetComponent<SpriteRenderer>().enabled = true;
-                    shieldUISlider.fillRect.gameObject.SetActive(true); 
-                    Invoke("ShieldsDown",shieldLasting);
+                    shieldUISlider.fillRect.gameObject.SetActive(true);
+                    Invoke("ShieldsDown", shieldLasting);
                     shieldUISlider.value = 1f;
-                    InvokeRepeating("DecShieldMeter",0,shieldLasting/100);
-                break;
+                    InvokeRepeating("DecShieldMeter", 0, shieldLasting / 100);
+                    break;
 
                 // case "BonusChest":
                 //     BonusSpawn bonusSpawn = new BonusSpawn();
@@ -45,38 +50,44 @@ public class Bonus : MonoBehaviour
                 // break;
 
                 case "HP":
-                    if (Player.instance.playerHealth < Player.instance.maxHealth){
+                    if (Player.instance.playerHealth < Player.instance.maxHealth)
+                    {
                         Player.instance.playerHealth++;
-                        hpUISlider.value = (float) Player.instance.playerHealth / Player.instance.maxHealth;
+                        hpUISlider.value = (float)Player.instance.playerHealth / Player.instance.maxHealth;
                     }
-                    
-                break;
+
+                    break;
                 case "Bomb":
-                    foreach(var enemy in GameObject.FindGameObjectsWithTag("Enemy") ){
+                    foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                    {
                         enemy.GetComponent<Enemy>().GetDamage(10);
                     }
-                    foreach(var bullet in GameObject.FindGameObjectsWithTag("BulletEnemy") ){
+                    foreach (var bullet in GameObject.FindGameObjectsWithTag("BulletEnemy"))
+                    {
                         Destroy(bullet);
                     }
-                    Instantiate(bombPS,transform.position,Quaternion.identity);
-                break;
+                    Instantiate(bombPS, transform.position, Quaternion.identity);
+                    break;
             }
             transform.position = new Vector2(transform.position.x + 150, transform.position.y - 150); //Просто выкидываю за сцену, а потом уничтожаю. Так нужно потому, что инвоук перестает работать, если объект уничтожен.
-            Destroy(gameObject,6f);
+            Destroy(gameObject, 6f);
         }
 
-        
+
     }
-        void DecShieldMeter(){
-            if (shieldUISlider.value <= 0){
-                CancelInvoke("DecShieldMeter");
-            }
-            shieldUISlider.value -= 0.01f;
-            
+    void DecShieldMeter()
+    {
+        if (shieldUISlider.value <= 0)
+        {
+            CancelInvoke("DecShieldMeter");
         }
-        void ShieldsDown(){
-            shieldSprite.GetComponent<EdgeCollider2D>().enabled = false;
-            shieldSprite.GetComponent<SpriteRenderer>().enabled = false;
-            shieldUISlider.fillRect.gameObject.SetActive(false); //Заставляет ползунок со щитом исчезнуть
-        }
+        shieldUISlider.value -= 0.01f;
+
+    }
+    void ShieldsDown()
+    {
+        shieldSprite.GetComponent<EdgeCollider2D>().enabled = false;
+        shieldSprite.GetComponent<SpriteRenderer>().enabled = false;
+        shieldUISlider.fillRect.gameObject.SetActive(false); //Заставляет ползунок со щитом исчезнуть
+    }
 }

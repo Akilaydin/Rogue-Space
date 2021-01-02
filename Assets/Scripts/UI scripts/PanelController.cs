@@ -9,29 +9,37 @@ public class PanelController : MonoBehaviour
     public GameObject[] panels;
     public Slider loadingSlider;
 
-    void Start(){
+    void Start()
+    {
         HideAllPanels();
     }
-    public void ShowPanel(int panelIndex){
+    public void ShowPanel(int panelIndex)
+    {
         panels[panelIndex].SetActive(true);
     }
 
-    public void HidePanel(int panelIndex){
+    public void HidePanel(int panelIndex)
+    {
         panels[panelIndex].SetActive(false);
     }
 
-    public void HideAllPanels(){
-        foreach (var panel in panels){
+    public void HideAllPanels()
+    {
+        foreach (var panel in panels)
+        {
             panel.SetActive(false);
         }
     }
-    public void LaunchGame(){
+    public void LaunchGame()
+    {
         StartCoroutine(loadLevelAsync(1));
     }
 
-    IEnumerator loadLevelAsync(int sceneIndex){
+    IEnumerator loadLevelAsync(int sceneIndex)
+    {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneIndex);
-        while (loadOperation.isDone == false){
+        while (loadOperation.isDone == false)
+        {
             float loadProgress = Mathf.Clamp01(loadOperation.progress / 0.9f);
             loadingSlider.value = loadProgress;
             yield return null;

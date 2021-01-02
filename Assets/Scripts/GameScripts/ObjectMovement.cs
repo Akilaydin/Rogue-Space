@@ -6,7 +6,8 @@ public class ObjectMovement : MonoBehaviour
 {
     public float speed;
 
-    void Update(){
+    void Update()
+    {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 }

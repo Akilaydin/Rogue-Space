@@ -19,7 +19,7 @@ public class PlanetsSpawn : MonoBehaviour
         StartCoroutine(PlanetsCreation());
     }
 
- 
+
 
     IEnumerator PlanetsCreation()
     {
@@ -59,5 +59,5 @@ public class PlanetsSpawn : MonoBehaviour
             yield return new WaitForSeconds(time_Planet_Spawn);
         }
     }
-    
+
 }
