@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,12 +43,6 @@ public class Bonus : MonoBehaviour
                     InvokeRepeating("DecShieldMeter", 0, shieldLasting / 100);
                     break;
 
-                // case "BonusChest":
-                //     BonusSpawn bonusSpawn = new BonusSpawn();
-                //     Debug.Log(bonusSpawn.bonusObjets[1]);
-                //     Instantiate(bonusSpawn.bonusObjets[Random.Range(0,bonusSpawn.bonusObjets.Length)],transform.position,Quaternion.identity);
-                // break;
-
                 case "HP":
                     if (Player.instance.playerHealth < Player.instance.maxHealth)
                     {
@@ -69,6 +63,7 @@ public class Bonus : MonoBehaviour
                     Instantiate(bombPS, transform.position, Quaternion.identity);
                     break;
             }
+            gameObject.GetComponent<AudioSource>().Play();
             transform.position = new Vector2(transform.position.x + 150, transform.position.y - 150); //Просто выкидываю за сцену, а потом уничтожаю. Так нужно потому, что инвоук перестает работать, если объект уничтожен.
             Destroy(gameObject, 6f);
         }

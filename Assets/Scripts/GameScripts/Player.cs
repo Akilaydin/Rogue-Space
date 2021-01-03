@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     public ParticleSystem playerCleanAfterInvincibility;
     private SpriteRenderer playerRenderer;
 
+
+    private AudioSource playerHitSound;
+    private AudioSource playerDestructionSound;
+
     [Header("Tricks for testing")]
     [SerializeField]
     private float smallSizeMultiplier;
@@ -53,6 +57,10 @@ public class Player : MonoBehaviour
         invincibilityDeltaTime = invincibilityDuration / 7; //Getting 5 frames of invincibility.
         playerRenderer = GetComponent<SpriteRenderer>();
         RefreshHpBar();
+
+
+        playerHitSound = PlayerSoundManager.instance.GetAudioByClipName("PlayerHitSound");
+        playerDestructionSound = PlayerSoundManager.instance.GetAudioByClipName("DeathSound");
 
     }
 
@@ -94,11 +102,32 @@ public class Player : MonoBehaviour
             playerHealth -= damage;
             StartCoroutine(BecomeInvincible());
             RefreshHpBar();
+
+
+
+            if (playerHealth <= 0){
+                if (playerDestructionSound != null)
+                {
+                    playerDestructionSound.Play();
+                }
+                else
+                {
+                    Debug.Log("pDS == null");
+                }                
+            } else {
+                if (playerHitSound != null)
+                {
+                    playerHitSound.Play();
+                }
+                else
+                {
+                    Debug.Log("pHS == null");
+                }
+            }
+
+
         }
-
-
     }
-
     public void RefreshHpBar()
     {
         hpSliderPlayer.value = (float)playerHealth / maxHealth; //Чтобы нормально работало с ползунком, нужно делить на десять.
@@ -106,6 +135,7 @@ public class Player : MonoBehaviour
 
     public void Destruction()
     {
+
         Destroy(gameObject);
         addPanel.SetActive(false);
 

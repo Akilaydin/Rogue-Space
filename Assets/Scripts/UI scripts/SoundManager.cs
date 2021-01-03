@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    //
-    //For some reason the script isnt' working while the PlayOnAwake option is checked, so it's important to uncheck this.
-    //I tried to do it programatically, but it didn't work either. 
     public AudioClip[] clips;
     private AudioSource source;
     private int clipIndex;

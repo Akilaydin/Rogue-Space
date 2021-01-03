@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -71,7 +71,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
             totalScore = Database.instance.LoadGameScore();
         }
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        scoreText.text = "Очки: " + totalScore;
+        LanguageScore();
         CheckAdds();
         StartCoroutine(CreateEnemyWaves());
         StartCoroutine(CreateShootingBossWaves());
@@ -185,8 +185,16 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     public void ScoreInGame(int score)
     {
         totalScore += score;
-        scoreText.text = "Очки: " + totalScore;
+        LanguageScore();
+        
         Database.instance.SaveGameScore();
+    }
+    private void LanguageScore(){
+        if (Application.systemLanguage == SystemLanguage.Russian){
+            scoreText.text = "Очки: " + totalScore;
+        } else {
+            scoreText.text = "Score: " + totalScore;
+        }
     }
 
     public void PauseGame()

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public ParticleSystem gunCPS, gunRPS, gunLPS, gunLLPS, gunRRPS;
+
     public static PlayerShooting instance;
     public GameObject bulletObj;
     public float bulletSpawnTime = 0.3f; //Перезарядка
     [HideInInspector]
     public float timer_Shot;
+    private AudioSource shootAudio = null;
 
+
+    [Header("GunsSettings")]
+    public ParticleSystem gunCPS, gunRPS, gunLPS, gunLLPS, gunRRPS;
     public GameObject gunC, gunR, gunL, gunLL, gunRR;
     public int currentLevelOfGuns = 1; //Дописывал сам
     public int maxLevelOfGuns = 5; //Дописывал сам
@@ -25,6 +29,11 @@ public class PlayerShooting : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        shootAudio = PlayerSoundManager.instance.GetAudioByClipName("ShotSound");
     }
 
 
@@ -44,7 +53,6 @@ public class PlayerShooting : MonoBehaviour
                     Instantiate(bulletObj, gunR.transform.position, Quaternion.identity);
                     gunCPS.Play();
                     gunRPS.Play();
-
                     break;
                 case 3:
                     Instantiate(bulletObj, gunC.transform.position, Quaternion.identity);
@@ -78,9 +86,17 @@ public class PlayerShooting : MonoBehaviour
                     break;
             }
 
+
+            if (shootAudio != null){
+                shootAudio.pitch = Random.Range(0.8f, 1.2f);
+                shootAudio.Play();
+            } else {
+                Debug.Log("sHA == null");
+            }
+            
+
+
         }
     }
-
-    //DEBUG----------------
-
+    
 }

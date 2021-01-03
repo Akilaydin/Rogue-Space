@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float shotTimeMin, shotTimeMax; //Нужно, чтобы враг не стрелял тогда, когда игрок его не видит.
     public int shotChance; //Переменная для шанса на стрельбу
     public ParticleSystem enemyDeathPS, PlayerBulletPS;
+    private AudioSource enemyDeathAudio;
 
     [Header("BOSS")]
     public bool isBoss;
@@ -36,6 +37,26 @@ public class Enemy : MonoBehaviour
     public float chanceToGenerateBonus;
 
 
+
+
+    void Start()
+    {
+        
+        if (isShootingBoss)
+        {
+            Invoke("OpenFireBoss", 1);
+        }
+        if (isBoss)
+        {
+            bossDeathPSSPawnArray = bossDeathPS.GetComponentsInChildren<ParticleSystem>();
+        }
+        if (!isBoss)
+        {
+            enemyDeathAudio = gameObject.GetComponent<AudioSource>();
+            InvokeRepeating("OpenFire", Random.Range(shotTimeMin, shotTimeMax), 3f);
+        }
+    }
+
     void Update()
     {
         if (isBoss)
@@ -48,24 +69,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-        if (isShootingBoss)
-        {
-            Invoke("OpenFireBoss", 1);
-        }
-        if (isBoss)
-        {
-            bossDeathPSSPawnArray = bossDeathPS.GetComponentsInChildren<ParticleSystem>();
-        }
-        if (!isBoss)
-        {
-            InvokeRepeating("OpenFire", Random.Range(shotTimeMin, shotTimeMax), 3f);
-        }
-    }
-
-
     void OpenFireBoss()
     {
         if ((Random.value < (float)bossWaveChanceShot / 100) && isBoss)
@@ -100,9 +103,16 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(int damage)
     {
+       
+
         enemyHealth -= damage;
+         if (enemyHealth <= 0)
+        {
+            PlayEnemyDeathSound();
+            
+        }
         if (enemyHealth > 0)
-        { //Чтобы взрыв от пули не призывался, если враг умирает, чтобы вместо этого призвать эффект смерти врага.
+        {
             Instantiate(PlayerBulletPS, transform.position, Quaternion.identity);
         }
         if (enemyHealth <= 0)
@@ -112,7 +122,18 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void PlayEnemyDeathSound(){
 
+           if (enemyDeathAudio != null)
+            {
+                Debug.Log("EnemyDeathAudio = " + enemyDeathAudio.clip);
+                enemyDeathAudio.Play();
+            }
+            else
+            {
+                Debug.Log("EnemyDeathAudio == null");
+            }
+    }
 
     void BossDeath()
     {
@@ -139,6 +160,8 @@ public class Enemy : MonoBehaviour
     {
 
         LevelController.instance.ScoreInGame(givenScore);
+        
+
 
         if (isBonusEnemy && Random.value <= chanceToGenerateBonus)
         {
@@ -147,6 +170,7 @@ public class Enemy : MonoBehaviour
         }
         if (!isBoss)
         {
+           
             Instantiate(enemyDeathPS, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
