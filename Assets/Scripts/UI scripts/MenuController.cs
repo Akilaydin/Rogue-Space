@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     private Text scoreText, signInText;
-    private bool isSignedIn = false;
 
     void Start()
     {

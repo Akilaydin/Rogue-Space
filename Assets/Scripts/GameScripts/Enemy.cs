@@ -103,23 +103,27 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-       
-
+        
         enemyHealth -= damage;
-         if (enemyHealth <= 0)
+        if (enemyHealth <= 0)
         {
             PlayEnemyDeathSound();
+            EnemyDeath();
             
         }
         if (enemyHealth > 0)
         {
+            StartCoroutine(GetTransparentOnDamage());
             Instantiate(PlayerBulletPS, transform.position, Quaternion.identity);
         }
-        if (enemyHealth <= 0)
-        {
-            EnemyDeath();
-        }
+    }
 
+    private IEnumerator GetTransparentOnDamage()
+    {
+        SpriteRenderer enemyRenderer = gameObject.GetComponent<SpriteRenderer>();
+        enemyRenderer.color = new Color(enemyRenderer.color.r, enemyRenderer.color.g, enemyRenderer.color.b, 0.5f); //Выключаем
+        yield return new WaitForSeconds(0.1f);
+        enemyRenderer.color = new Color(enemyRenderer.color.r, enemyRenderer.color.g, enemyRenderer.color.b, 1);
     }
 
     private void PlayEnemyDeathSound(){
