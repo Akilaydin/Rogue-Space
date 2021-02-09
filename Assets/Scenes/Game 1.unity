@@ -3377,7 +3377,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: adfeb80e5921749458997f5728a457c6, type: 3}
-    m_FontSize: 88
+    m_FontSize: 76
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -4981,7 +4981,7 @@ PrefabInstance:
     - target: {fileID: 5708236093664818836, guid: 25b6fc8d4cb841c42ba57fc7d123c485,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b6fc8d4cb841c42ba57fc7d123c485, type: 3}

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 [System.Serializable]
@@ -17,7 +19,7 @@ public class Borders
 }
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement instance; //Ссылка для того, чтобы другие объекты могли к нам обращаться.
+    public static PlayerMovement instance; //A reference for other script to call it.
     public Borders borders;
     public int playerSpeed = 5;
     public int fingerInputOffset = 5;
@@ -42,11 +44,17 @@ public class PlayerMovement : MonoBehaviour
     {
         ResizeBorders();
     }
+
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
             mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+            if (EventSystem.current.IsPointerOverGameObject()) //Checks if pointer is over the UI object to prevent the ship movement when user touches pause button.
+            {
+                Debug.Log("Not PointerOver");
+                return;
+            }
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(mousePosition.x, mousePosition.y + fingerInputOffset), playerSpeed * Time.deltaTime);
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, borders.minX, borders.maxX), Mathf.Clamp(transform.position.y, borders.minY, borders.maxY));
         }
