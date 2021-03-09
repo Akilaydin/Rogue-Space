@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage;
+    public float enemyDamage = 1;
+    public float playerDamage = 1;
     public bool isEnemyBullet;
-    
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (isEnemyBullet && coll.tag == "Player" && Player.instance.isInvincible == false)
         {
-            Player.instance.GetDamage(damage);
+            Player.instance.GetDamage(enemyDamage);
             Destroy(gameObject);
         }
         else if (!isEnemyBullet && coll.tag == "Enemy")
         {
-            coll.GetComponent<Enemy>().GetDamage(damage);
+            coll.GetComponent<Enemy>().GetDamage(playerDamage);
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (isEnemyBullet == false)
+        {
+            playerDamage += playerDamage * Database.instance.LoadDamageUpgrade();
+            Debug.Log(Database.instance.LoadDamageUpgrade() + "damageUpg");
         }
     }
 

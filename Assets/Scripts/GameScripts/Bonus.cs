@@ -44,10 +44,10 @@ public class Bonus : MonoBehaviour
                     break;
 
                 case "HP":
-                    if (Player.instance.playerHealth < Player.instance.maxHealth)
+                    if (Player.instance.playerHealth < Player.instance.playerMaxHealth)
                     {
                         Player.instance.playerHealth++;
-                        hpUISlider.value = (float)Player.instance.playerHealth / Player.instance.maxHealth;
+                        hpUISlider.value = (float)Player.instance.playerHealth / Player.instance.playerMaxHealth;
                     }
 
                     break;

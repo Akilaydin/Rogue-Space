@@ -171,11 +171,11 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     void OnApplicationPause(bool pauseStatus)
     {
         isPausedForSavingScore = pauseStatus;
-        Database.instance.SaveGameScore();
+        Database.instance.SaveGameScore(true, 0);
     }
     void OnApplicationQuit()
     {
-        Database.instance.SaveGameScore();
+        Database.instance.SaveGameScore(true, 0);
         StopAllCoroutines();
 
     }
@@ -187,7 +187,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
         totalScore += score;
         LanguageScore();
         
-        Database.instance.SaveGameScore();
+        Database.instance.SaveGameScore(true, 0);
     }
     private void LanguageScore(){
         if (Application.systemLanguage == SystemLanguage.Russian){
@@ -294,7 +294,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
             Debug.Log("The REWARDED add has been sucessfully watched");
 
             addPanel.SetActive(false);
-            Player.instance.playerHealth = Player.instance.maxHealth;
+            Player.instance.playerHealth = Player.instance.playerMaxHealth;
             Player.instance.RefreshHpBar();
             Time.timeScale = 1;
             Instantiate(clearScreenBomb, Player.instance.transform.position, Quaternion.identity);

@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 122353144}
   - component: {fileID: 122353143}
   m_Layer: 5
-  m_Name: ButtonUpgradeSmthElse
+  m_Name: ButtonUpgradeFireRate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 122353144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 370852919}
+        m_TargetAssemblyTypeName: UpgradesController, Assembly-CSharp
+        m_MethodName: UpgradeFireRate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &122353144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +898,7 @@ GameObject:
   - component: {fileID: 370852916}
   - component: {fileID: 370852918}
   - component: {fileID: 370852917}
+  - component: {fileID: 370852919}
   m_Layer: 5
   m_Name: PanelShop
   m_TagString: Untagged
@@ -955,6 +968,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370852915}
   m_CullTransparentMesh: 0
+--- !u!114 &370852919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370852915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c723eb5df495894f80e89f6bc16b20e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageUpgradeCost: 100
+  hpUpgradeCost: 80
+  fireRateUpgradeCost: 150
+  damageUpgradeDegree: 0.1
+  hpUpgradeDegree: 0.1
+  fireRateUpgradeDegree: 0.1
 --- !u!1 &540124342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1988,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 885482153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 370852919}
+        m_TargetAssemblyTypeName: UpgradesController, Assembly-CSharp
+        m_MethodName: UpgradeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &885482153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2080,7 +2123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 951210234}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 370852919}
+        m_TargetAssemblyTypeName: UpgradesController, Assembly-CSharp
+        m_MethodName: UpgradeHp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &951210234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,7 +2446,7 @@ GameObject:
   - component: {fileID: 1095078327}
   - component: {fileID: 1095078326}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FireRateImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3430,7 +3485,7 @@ GameObject:
   - component: {fileID: 1655687242}
   - component: {fileID: 1655687241}
   m_Layer: 5
-  m_Name: SmthElseText
+  m_Name: FireRateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3452,7 +3507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -157.9}
+  m_AnchoredPosition: {x: 0, y: -169}
   m_SizeDelta: {x: 267.0081, y: 67.84844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655687241
@@ -3488,7 +3543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0427\u0442\u043E-\u0442\u043E"
+  m_Text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C\n\u0421\u0442\u0440\u0435\u043B\u044C\u0431\u044B"
 --- !u!222 &1655687242
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         shootAudio = PlayerSoundManager.instance.GetAudioByClipName("ShotSound");
+        bulletSpawnTime -= bulletSpawnTime * Database.instance.LoadFireRateUpgrade();
+        Debug.Log(Database.instance.LoadFireRateUpgrade() + "fireRateUpg");
     }
 
 

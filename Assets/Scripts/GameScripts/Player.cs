@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
 {
     [Header("Player")]
     public static Player instance = null; //Ссылка на игрока, чтобы можно было взаимодействовать с ним из других скриптов.
-    public int playerHealth = 1;
-    public int maxHealth = 5;
+    public float playerHealth = 1;
+    public float playerMaxHealth = 5;
     public float invincibilityDuration = 1f;
     private float invincibilityDeltaTime;
     public bool isInvincible = false;
@@ -54,8 +54,13 @@ public class Player : MonoBehaviour
         hpSliderPlayer = GameObject.FindGameObjectWithTag("HP_UI").GetComponent<Slider>();
         shieldSliderPlayer = GameObject.FindGameObjectWithTag("Shield_UI").GetComponent<Slider>();
         shieldSliderPlayer.fillRect.gameObject.SetActive(false);
-        invincibilityDeltaTime = invincibilityDuration / 7; //Getting 5 frames of invincibility.
+        invincibilityDeltaTime = invincibilityDuration / 7;//Getting 5 frames of invincibility.
         playerRenderer = GetComponent<SpriteRenderer>();
+        
+        
+        playerMaxHealth += playerMaxHealth * Database.instance.LoadHpUpgrade();
+        playerHealth = playerMaxHealth;
+        Debug.Log(Database.instance.LoadHpUpgrade() + "hpUpg");
         RefreshHpBar();
 
 
@@ -94,7 +99,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
         if (!isInvincible)
         {
@@ -130,7 +135,7 @@ public class Player : MonoBehaviour
     }
     public void RefreshHpBar()
     {
-        hpSliderPlayer.value = (float)playerHealth / maxHealth; //Чтобы нормально работало с ползунком, нужно делить на десять.
+        hpSliderPlayer.value = (float)playerHealth / playerMaxHealth; //Чтобы нормально работало с ползунком, нужно делить на десять.
     }
 
     public void Destruction()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHealth;
+    public float enemyHealth;
     public int givenScore;
 
     [Space]
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
+
         if (isShootingBoss)
         {
             Invoke("OpenFireBoss", 1);
@@ -101,15 +101,15 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
-        
+
         enemyHealth -= damage;
         if (enemyHealth <= 0)
         {
             PlayEnemyDeathSound();
             EnemyDeath();
-            
+
         }
         if (enemyHealth > 0)
         {
@@ -126,17 +126,18 @@ public class Enemy : MonoBehaviour
         enemyRenderer.color = new Color(enemyRenderer.color.r, enemyRenderer.color.g, enemyRenderer.color.b, 1);
     }
 
-    private void PlayEnemyDeathSound(){
+    private void PlayEnemyDeathSound()
+    {
 
-           if (enemyDeathAudio != null)
-            {
-                Debug.Log("EnemyDeathAudio = " + enemyDeathAudio.clip);
-                enemyDeathAudio.Play();
-            }
-            else
-            {
-                Debug.Log("EnemyDeathAudio == null");
-            }
+        if (enemyDeathAudio != null)
+        {
+            Debug.Log("EnemyDeathAudio = " + enemyDeathAudio.clip);
+            enemyDeathAudio.Play();
+        }
+        else
+        {
+            Debug.Log("EnemyDeathAudio == null");
+        }
     }
 
     void BossDeath()
@@ -164,7 +165,7 @@ public class Enemy : MonoBehaviour
     {
 
         LevelController.instance.ScoreInGame(givenScore);
-        
+
 
 
         if (isBonusEnemy && Random.value <= chanceToGenerateBonus)
@@ -174,7 +175,7 @@ public class Enemy : MonoBehaviour
         }
         if (!isBoss)
         {
-           
+
             Instantiate(enemyDeathPS, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0548493889d2af8418b83709897b2619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  enemyDamage: 1
+  playerDamage: 0
   isEnemyBullet: 1
 --- !u!114 &4201288450153189608
 MonoBehaviour:
