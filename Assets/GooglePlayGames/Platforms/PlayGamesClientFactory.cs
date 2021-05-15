@@ -18,9 +18,8 @@
 
 namespace GooglePlayGames
 {
-    using UnityEngine;
     using GooglePlayGames.BasicApi;
-    using GooglePlayGames.OurUtils;
+    using UnityEngine;
 
     internal class PlayGamesClientFactory
     {

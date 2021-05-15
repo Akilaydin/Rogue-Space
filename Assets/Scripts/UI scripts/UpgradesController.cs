@@ -1,97 +1,108 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class UpgradesController : MonoBehaviour
 {
 
-
     [SerializeField]
-    private int damageUpgradeCost = 100;
-    [SerializeField]
-    private float damageUpgradeCostIncremention = 1.6f;
+    private float damageUpgradeCostIncremention = 2.2f;
     [SerializeField]
     private float damageUpgradeDegree = 0.1f;
 
 
-
     [SerializeField]
-    private int hpUpgradeCost = 80;
-    [SerializeField]
-    private float hpUpgradeCostIncremention = 1.4f;
+    private float hpUpgradeCostIncremention = 2.2f;
     [SerializeField]
     private float hpUpgradeDegree = 0.1f;
 
+    [SerializeField]
+    private float fireRateUpgradeCostIncremention = 4f;
+    [SerializeField]
+    private float fireRateUpgradeDegree = 0.005f;
 
-
-    [SerializeField]
-    private int fireRateUpgradeCost = 150;
-    [SerializeField]
-    private float fireRateUpgradeDegree = 0.01f;
-    [SerializeField]
-    private float fireRateUpgradeCostIncremention = 2.5f;
 
 
     [SerializeField]
-    private Text hpCostText,hpLevelText;
+    private Text hpCostText, hpLevelText, hpCurrentText;
     [SerializeField]
-    private Text damageCostText,damageLevelText;
+    private Text damageCostText, damageLevelText, damageCurrentText;
     [SerializeField]
-    private Text fireRateCostText,fireRateLevelText;
+    private Text fireRateCostText, fireRateLevelText, fireRateCurrentText;
 
-    private string upgradeLevelTemplate = "Уровень улучшения: ";
-    private string upgradeCostTemplate = "Стоимость улучшения: ";
+
+    private string upgradeLevelTemplate = "Уровень:";
+    private string upgradeCostTemplate = "Стоимость:";
+    private string currentUpgradeTemplate = "Текущий:";
 
     private int totalScore;
 
-    private void Start() {
+    private void Start()
+    {
         totalScore = Database.instance.LoadGameScore();
-
         UpgradeLevelOfDamage();
         UpgradeLevelOfFireRate();
         UpgradeLevelOfHP();
     }
+
     public void UpgradeDamage()
     {
-        if (totalScore >= damageUpgradeCost)
+        int damageUpgradeLocalCost;
+        damageUpgradeLocalCost = Database.instance.LoadDamageUpgradeCost();
+
+        if (totalScore >= damageUpgradeLocalCost)
         {
-            totalScore -= damageUpgradeCost;
-            Database.instance.SaveGameScore(false,totalScore);
-            Database.instance.SaveDamageUpgrade(damageUpgradeDegree,damageUpgradeCostIncremention * damageUpgradeCost);
+            totalScore -= damageUpgradeLocalCost;
+            Database.instance.SaveGameScore(false, totalScore);
+            Database.instance.SaveDamageCost((int)(damageUpgradeLocalCost * damageUpgradeCostIncremention));
+            Database.instance.SaveAndIncreaseDamageLevel();
+            Database.instance.SaveCurrentDamage(damageUpgradeDegree);
             MenuController.instance.RefreshScoreInMenu();
             UpgradeLevelOfDamage();
-        } 
-        else {
+        }
+        else
+        {
             Debug.Log("Dont have enough money");
         }
     }
 
     public void UpgradeHp()
     {
-        if (totalScore >= hpUpgradeCost)
+        int hpUpgradeLocalCost;
+        hpUpgradeLocalCost = Database.instance.LoadHpUpgradeCost();
+
+        if (totalScore >= hpUpgradeLocalCost)
         {
-            totalScore -= hpUpgradeCost;
-            Database.instance.SaveGameScore(false,totalScore);
-            Database.instance.SaveHpUpgrade(hpUpgradeDegree,hpUpgradeCostIncremention * hpUpgradeCost);
+            totalScore -= hpUpgradeLocalCost;
+            Database.instance.SaveGameScore(false, totalScore);
+            Database.instance.SaveHPCost((int)(hpUpgradeLocalCost * hpUpgradeCostIncremention));
+            Database.instance.SaveAndIncreaseHPLevel();
+            Database.instance.SaveCurrentHP(hpUpgradeDegree);
             MenuController.instance.RefreshScoreInMenu();
             UpgradeLevelOfHP();
-        } 
-        else {
+        }
+        else
+        {
             Debug.Log("Dont have enough money");
         }
     }
 
     public void UpgradeFireRate()
     {
-        if (totalScore >= fireRateUpgradeCost)
+        int fireRateUpgradeLocalCost;
+        fireRateUpgradeLocalCost = Database.instance.LoadFireRateUpgradeCost();
+        if (totalScore >= fireRateUpgradeLocalCost)
         {
-            totalScore -= fireRateUpgradeCost;
-            Database.instance.SaveGameScore(false,totalScore);
-            Database.instance.SaveFireRateUpgrade(fireRateUpgradeDegree,fireRateUpgradeCostIncremention * fireRateUpgradeCost);
+            totalScore -= fireRateUpgradeLocalCost;
+            Database.instance.SaveGameScore(false, totalScore);
+            Database.instance.SaveFireRateCost((int)(fireRateUpgradeLocalCost * fireRateUpgradeCostIncremention));
+            Database.instance.SaveAndIncreaseFireRateLevel();
+            Database.instance.SaveCurrentFireRate(fireRateUpgradeDegree);
             MenuController.instance.RefreshScoreInMenu();
             UpgradeLevelOfFireRate();
-        } 
-        else {
+
+        }
+        else
+        {
             Debug.Log("Dont have enough money");
         }
     }
@@ -100,19 +111,22 @@ public class UpgradesController : MonoBehaviour
 
     private void UpgradeLevelOfHP()
     {
-        hpLevelText.text = upgradeLevelTemplate + Database.instance.LoadHpUpgradeLevel().ToString();
+        hpCurrentText.text = currentUpgradeTemplate + Database.instance.LoadCurrentHP().ToString();
         hpCostText.text = upgradeCostTemplate + Database.instance.LoadHpUpgradeCost().ToString();
+        hpLevelText.text = upgradeLevelTemplate + Database.instance.LoadHpUpgradeLevel().ToString();
     }
 
     private void UpgradeLevelOfDamage()
     {
-        damageLevelText.text = upgradeLevelTemplate + Database.instance.LoadDamageUpgradeLevel().ToString();
+        damageCurrentText.text = currentUpgradeTemplate + Database.instance.LoadCurrentDamage().ToString();
         damageCostText.text = upgradeCostTemplate + Database.instance.LoadDamageUpgradeCost().ToString();
+        damageLevelText.text = upgradeLevelTemplate + Database.instance.LoadDamageUpgradeLevel().ToString();
     }
 
     private void UpgradeLevelOfFireRate()
     {
-        fireRateLevelText.text = upgradeLevelTemplate + Database.instance.LoadFireRateUpgradeLevel().ToString();
+        fireRateCurrentText.text = currentUpgradeTemplate + Database.instance.LoadCurrentFireRate().ToString();
         fireRateCostText.text = upgradeCostTemplate + Database.instance.LoadFireRateUpgradeCost().ToString();
+        fireRateLevelText.text = upgradeLevelTemplate + Database.instance.LoadFireRateUpgradeLevel().ToString();
     }
 }

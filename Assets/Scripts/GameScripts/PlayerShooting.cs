@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
 
     public static PlayerShooting instance;
     public GameObject bulletObj;
-    public float bulletSpawnTime = 0.3f; //Перезарядка
+    public float fireRate = 0.3f; //Перезарядка
     [HideInInspector]
     public float timer_Shot;
     private AudioSource shootAudio = null;
-
+    public int damage = 1;
 
     [Header("GunsSettings")]
     public ParticleSystem gunCPS, gunRPS, gunLPS, gunLLPS, gunRRPS;
@@ -34,8 +32,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         shootAudio = PlayerSoundManager.instance.GetAudioByClipName("ShotSound");
-        bulletSpawnTime -= bulletSpawnTime * Database.instance.LoadFireRateUpgrade();
-        Debug.Log(Database.instance.LoadFireRateUpgrade() + "fireRateUpg");
+        fireRate = Database.instance.LoadCurrentFireRate();
     }
 
 
@@ -43,7 +40,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Time.time > timer_Shot)
         {
-            timer_Shot = Time.time + bulletSpawnTime;
+            timer_Shot = Time.time + fireRate;
             switch (currentLevelOfGuns)
             {
                 case 1:
@@ -89,16 +86,19 @@ public class PlayerShooting : MonoBehaviour
             }
 
 
-            if (shootAudio != null){
+            if (shootAudio != null)
+            {
                 shootAudio.pitch = Random.Range(0.8f, 1.2f);
                 shootAudio.Play();
-            } else {
+            }
+            else
+            {
                 Debug.Log("sHA == null");
             }
-            
+
 
 
         }
     }
-    
+
 }

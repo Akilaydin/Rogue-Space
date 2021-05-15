@@ -16,10 +16,6 @@
 
 namespace GooglePlayGames.BasicApi.Video
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using GooglePlayGames.OurUtils;
-
     /// <summary>
     /// Represents the video recording capabilities.
     /// </summary>
@@ -42,20 +38,17 @@ namespace GooglePlayGames.BasicApi.Video
         }
 
         /// <summary>Returns whether the service is currently capturing or not.</summary>
-        public bool IsCapturing
-        {
+        public bool IsCapturing {
             get { return mIsCapturing; }
         }
 
         /// <summary>Returns the capture mode of the current capture.</summary>
-        public VideoCaptureMode CaptureMode
-        {
+        public VideoCaptureMode CaptureMode {
             get { return mCaptureMode; }
         }
 
         /// <summary>Returns the quality level of the current capture.</summary>
-        public VideoQualityLevel QualityLevel
-        {
+        public VideoQualityLevel QualityLevel {
             get { return mQualityLevel; }
         }
 
@@ -65,8 +58,7 @@ namespace GooglePlayGames.BasicApi.Video
         /// <remarks>
         /// This also indicates the capture overlay is being used by the user and background capture will fail.
         /// </remarks>
-        public bool IsOverlayVisible
-        {
+        public bool IsOverlayVisible {
             get { return mIsOverlayVisible; }
         }
 
@@ -76,8 +68,7 @@ namespace GooglePlayGames.BasicApi.Video
         /// <remarks>
         /// Will always be <code>false</code> if <code>IsCapturing</code> if <code>false</code>.
         /// </remarks>
-        public bool IsPaused
-        {
+        public bool IsPaused {
             get { return mIsPaused; }
         }
 

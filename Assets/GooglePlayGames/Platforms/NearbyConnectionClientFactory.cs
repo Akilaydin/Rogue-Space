@@ -19,10 +19,9 @@
 #if (UNITY_ANDROID)
 namespace GooglePlayGames
 {
-    using UnityEngine;
-    using System;
-    using GooglePlayGames.OurUtils;
     using GooglePlayGames.BasicApi.Nearby;
+    using System;
+    using UnityEngine;
 
     public static class NearbyConnectionClientFactory
     {

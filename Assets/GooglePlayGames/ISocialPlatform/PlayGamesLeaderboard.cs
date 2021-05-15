@@ -18,9 +18,8 @@
 
 namespace GooglePlayGames
 {
-    using System.Collections.Generic;
     using GooglePlayGames.BasicApi;
-    using UnityEngine;
+    using System.Collections.Generic;
     using UnityEngine.SocialPlatforms;
 
     public class PlayGamesLeaderboard : ILeaderboard
@@ -54,58 +53,48 @@ namespace GooglePlayGames
             PlayGamesPlatform.Instance.LoadScores(this, callback);
         }
 
-        public bool loading
-        {
+        public bool loading {
             get { return mLoading; }
             internal set { mLoading = value; }
         }
 
-        public string id
-        {
+        public string id {
             get { return mId; }
             set { mId = value; }
         }
 
-        public UserScope userScope
-        {
+        public UserScope userScope {
             get { return mUserScope; }
             set { mUserScope = value; }
         }
 
-        public Range range
-        {
+        public Range range {
             get { return mRange; }
             set { mRange = value; }
         }
 
-        public TimeScope timeScope
-        {
+        public TimeScope timeScope {
             get { return mTimeScope; }
             set { mTimeScope = value; }
         }
 
-        public IScore localUserScore
-        {
+        public IScore localUserScore {
             get { return mLocalUserScore; }
         }
 
-        public uint maxRange
-        {
+        public uint maxRange {
             get { return mMaxRange; }
         }
 
-        public IScore[] scores
-        {
-            get
-            {
+        public IScore[] scores {
+            get {
                 PlayGamesScore[] arr = new PlayGamesScore[mScoreList.Count];
                 mScoreList.CopyTo(arr);
                 return arr;
             }
         }
 
-        public string title
-        {
+        public string title {
             get { return mTitle; }
         }
 
@@ -118,10 +107,10 @@ namespace GooglePlayGames
                 OurUtils.Logger.d("Setting leaderboard from: " + data);
                 SetMaxRange(data.ApproximateCount);
                 SetTitle(data.Title);
-                SetLocalUserScore((PlayGamesScore) data.PlayerScore);
+                SetLocalUserScore((PlayGamesScore)data.PlayerScore);
                 foreach (IScore score in data.Scores)
                 {
-                    AddScore((PlayGamesScore) score);
+                    AddScore((PlayGamesScore)score);
                 }
 
                 mLoading = data.Scores.Length == 0 || HasAllScores();
@@ -132,7 +121,7 @@ namespace GooglePlayGames
 
         internal void SetMaxRange(ulong val)
         {
-            mMaxRange = (uint) val;
+            mMaxRange = (uint)val;
         }
 
         internal void SetTitle(string value)
@@ -167,8 +156,7 @@ namespace GooglePlayGames
             return mScoreList.Count;
         }
 
-        public int ScoreCount
-        {
+        public int ScoreCount {
             get { return mScoreList.Count; }
         }
 

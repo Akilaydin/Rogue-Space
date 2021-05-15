@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -49,7 +48,7 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     private Text scoreText;
     public int totalScore;
     private bool isPausedForSavingScore = false;
-    
+
 
 
     private void Awake()
@@ -186,13 +185,17 @@ public class LevelController : MonoBehaviour, IUnityAdsListener
     {
         totalScore += score;
         LanguageScore();
-        
+
         Database.instance.SaveGameScore(true, 0);
     }
-    private void LanguageScore(){
-        if (Application.systemLanguage == SystemLanguage.Russian){
+    private void LanguageScore()
+    {
+        if (Application.systemLanguage == SystemLanguage.Russian)
+        {
             scoreText.text = "Очки: " + totalScore;
-        } else {
+        }
+        else
+        {
             scoreText.text = "Score: " + totalScore;
         }
     }

@@ -3,11 +3,10 @@
 
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Collections.Generic;
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.Video;
     using GooglePlayGames.OurUtils;
+    using System;
     using UnityEngine;
 
     internal class AndroidVideoClient : IVideoClient

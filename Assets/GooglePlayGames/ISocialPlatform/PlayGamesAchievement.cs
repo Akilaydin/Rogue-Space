@@ -76,7 +76,7 @@ namespace GooglePlayGames
                 if (ach.TotalSteps > 0)
                 {
                     this.mPercentComplete =
-                        ((double) ach.CurrentSteps / (double) ach.TotalSteps) * 100.0;
+                        ((double)ach.CurrentSteps / (double)ach.TotalSteps) * 100.0;
                 }
                 else
                 {
@@ -170,8 +170,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The identifier.
         /// </returns>
-        public string id
-        {
+        public string id {
             get { return mId; }
 
             set { mId = value; }
@@ -184,8 +183,7 @@ namespace GooglePlayGames
         /// This value is only set by PlayGamesPlatform.LoadAchievements
         /// </remarks>
         /// <returns><c>true</c> if incremental; otherwise, <c>false</c>.</returns>
-        public bool isIncremental
-        {
+        public bool isIncremental {
             get { return mIsIncremental; }
         }
 
@@ -198,8 +196,7 @@ namespace GooglePlayGames
         /// percentComplete will not affect this.
         /// </remarks>
         /// <returns>The current steps.</returns>
-        public int currentSteps
-        {
+        public int currentSteps {
             get { return mCurrentSteps; }
         }
 
@@ -212,8 +209,7 @@ namespace GooglePlayGames
         /// percentComplete will not affect this.
         /// </remarks>
         /// <returns>The total steps.</returns>
-        public int totalSteps
-        {
+        public int totalSteps {
             get { return mTotalSteps; }
         }
 
@@ -223,8 +219,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The percent completed.
         /// </returns>
-        public double percentCompleted
-        {
+        public double percentCompleted {
             get { return mPercentComplete; }
 
             set { mPercentComplete = value; }
@@ -238,8 +233,7 @@ namespace GooglePlayGames
         /// percentComplete will not affect this.
         /// </remarks>
         /// <returns><c>true</c> if completed; otherwise, <c>false</c>.</returns>
-        public bool completed
-        {
+        public bool completed {
             get { return this.mCompleted; }
         }
 
@@ -247,39 +241,32 @@ namespace GooglePlayGames
         /// Gets a value indicating whether this achievement is hidden.
         /// </summary>
         /// <value><c>true</c> if hidden; otherwise, <c>false</c>.</value>
-        public bool hidden
-        {
+        public bool hidden {
             get { return this.mHidden; }
         }
 
-        public DateTime lastReportedDate
-        {
+        public DateTime lastReportedDate {
             get { return mLastModifiedTime; }
         }
 
-        public String title
-        {
+        public String title {
             get { return mTitle; }
         }
 
-        public Texture2D image
-        {
+        public Texture2D image {
             get { return LoadImage(); }
         }
 
-        public string achievedDescription
-        {
+        public string achievedDescription {
             get { return mDescription; }
         }
 
-        public string unachievedDescription
-        {
+        public string unachievedDescription {
             get { return mDescription; }
         }
 
-        public int points
-        {
-            get { return (int) mPoints; }
+        public int points {
+            get { return (int)mPoints; }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -25,8 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if (isEnemyBullet == false)
         {
-            playerDamage += playerDamage * Database.instance.LoadDamageUpgrade();
-            Debug.Log(Database.instance.LoadDamageUpgrade() + "damageUpg");
+            playerDamage = Database.instance.LoadCurrentDamage();
         }
     }
 

@@ -18,8 +18,8 @@
 
 namespace GooglePlayGames
 {
-    using System;
     using GooglePlayGames.BasicApi;
+    using System;
     using UnityEngine.SocialPlatforms;
 
     /// <summary>
@@ -88,8 +88,7 @@ namespace GooglePlayGames
         /// <summary>
         /// Synchronous version of friends, returns null until loaded.
         /// </summary>
-        public IUserProfile[] friends
-        {
+        public IUserProfile[] friends {
             get { return mPlatform.GetFriends(); }
         }
 
@@ -107,16 +106,14 @@ namespace GooglePlayGames
         /// <returns>
         /// <c>true</c> if authenticated; otherwise, <c>false</c>.
         /// </returns>
-        public bool authenticated
-        {
+        public bool authenticated {
             get { return mPlatform.IsAuthenticated(); }
         }
 
         /// <summary>
         /// Not implemented. As safety placeholder, returns true.
         /// </summary>
-        public bool underage
-        {
+        public bool underage {
             get { return true; }
         }
 
@@ -126,10 +123,8 @@ namespace GooglePlayGames
         /// <returns>
         /// The display name of the user.
         /// </returns>
-        public new string userName
-        {
-            get
-            {
+        public new string userName {
+            get {
                 string retval = string.Empty;
                 if (authenticated)
                 {
@@ -155,10 +150,8 @@ namespace GooglePlayGames
         /// <returns>
         /// The user's Google id.
         /// </returns>
-        public new string id
-        {
-            get
-            {
+        public new string id {
+            get {
                 string retval = string.Empty;
                 if (authenticated)
                 {
@@ -177,8 +170,7 @@ namespace GooglePlayGames
         /// <summary>
         /// Returns true (since this is the local user).
         /// </summary>
-        public new bool isFriend
-        {
+        public new bool isFriend {
             get { return true; }
         }
 
@@ -186,16 +178,13 @@ namespace GooglePlayGames
         /// Gets the local user's state. This is always <c>UserState.Online</c> for
         /// the local user.
         /// </summary>
-        public new UserState state
-        {
+        public new UserState state {
             get { return UserState.Online; }
         }
 
 
-        public new string AvatarURL
-        {
-            get
-            {
+        public new string AvatarURL {
+            get {
                 string retval = string.Empty;
                 if (authenticated)
                 {
@@ -221,10 +210,8 @@ namespace GooglePlayGames
         /// NOTE: This property can only be accessed using the main Unity thread.
         /// </remarks>
         /// <value>The email.</value>
-        public string Email
-        {
-            get
-            {
+        public string Email {
+            get {
                 // treat null as unitialized, empty as no email.  This can
                 // happen when the web client is not initialized.
                 if (authenticated && string.IsNullOrEmpty(emailAddress))

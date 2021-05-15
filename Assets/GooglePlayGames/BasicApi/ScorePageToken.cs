@@ -49,28 +49,23 @@ namespace GooglePlayGames.BasicApi
             mDirection = direction;
         }
 
-        public LeaderboardCollection Collection
-        {
+        public LeaderboardCollection Collection {
             get { return mCollection; }
         }
 
-        public LeaderboardTimeSpan TimeSpan
-        {
+        public LeaderboardTimeSpan TimeSpan {
             get { return mTimespan; }
         }
 
-        public ScorePageDirection Direction
-        {
+        public ScorePageDirection Direction {
             get { return mDirection; }
         }
 
-        public string LeaderboardId
-        {
+        public string LeaderboardId {
             get { return mId; }
         }
 
-        internal object InternalObject
-        {
+        internal object InternalObject {
             get { return mInternalObject; }
         }
     }

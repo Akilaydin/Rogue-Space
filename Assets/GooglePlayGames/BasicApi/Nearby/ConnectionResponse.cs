@@ -46,23 +46,19 @@ namespace GooglePlayGames.BasicApi.Nearby
             this.mPayload = Misc.CheckNotNull(payload);
         }
 
-        public long LocalClientId
-        {
+        public long LocalClientId {
             get { return mLocalClientId; }
         }
 
-        public string RemoteEndpointId
-        {
+        public string RemoteEndpointId {
             get { return mRemoteEndpointId; }
         }
 
-        public Status ResponseStatus
-        {
+        public Status ResponseStatus {
             get { return mResponseStatus; }
         }
 
-        public byte[] Payload
-        {
+        public byte[] Payload {
             get { return mPayload; }
         }
 

@@ -23,8 +23,7 @@ namespace GooglePlayGames.OurUtils
     {
         private static bool debugLogEnabled = false;
 
-        public static bool DebugLogEnabled
-        {
+        public static bool DebugLogEnabled {
             get { return debugLogEnabled; }
 
             set { debugLogEnabled = value; }
@@ -32,8 +31,7 @@ namespace GooglePlayGames.OurUtils
 
         private static bool warningLogEnabled = true;
 
-        public static bool WarningLogEnabled
-        {
+        public static bool WarningLogEnabled {
             get { return warningLogEnabled; }
 
             set { warningLogEnabled = value; }
@@ -85,7 +83,7 @@ namespace GooglePlayGames.OurUtils
                 timeString = string.Empty;
             }
 
-            return string.Format("{0} [Play Games Plugin " + PluginVersion.VersionString+ "] {1} {2}: {3}",
+            return string.Format("{0} [Play Games Plugin " + PluginVersion.VersionString + "] {1} {2}: {3}",
                 prefix, timeString, logType, msg);
         }
     }

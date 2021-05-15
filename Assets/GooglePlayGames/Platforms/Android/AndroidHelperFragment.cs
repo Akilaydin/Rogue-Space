@@ -19,10 +19,8 @@ namespace GooglePlayGames.Android
 {
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.SavedGame;
-    using OurUtils;
-    using UnityEngine;
     using System;
-    using System.Collections.Generic;
+    using UnityEngine;
 
     internal class AndroidHelperFragment
     {
@@ -56,7 +54,7 @@ namespace GooglePlayGames.Android
                     uiCode =>
                     {
                         OurUtils.Logger.d("ShowAchievementsUI result " + uiCode);
-                        cb.Invoke((UIStatus) uiCode);
+                        cb.Invoke((UIStatus)uiCode);
                     });
 
                 AndroidTaskUtils.AddOnFailureListener(
@@ -89,7 +87,7 @@ namespace GooglePlayGames.Android
                     uiCode =>
                     {
                         OurUtils.Logger.d("ShowAllLeaderboardsUI result " + uiCode);
-                        cb.Invoke((UIStatus) uiCode);
+                        cb.Invoke((UIStatus)uiCode);
                     });
 
                 AndroidTaskUtils.AddOnFailureListener(
@@ -114,7 +112,7 @@ namespace GooglePlayGames.Android
                     uiCode =>
                     {
                         OurUtils.Logger.d("ShowLeaderboardUI result " + uiCode);
-                        cb.Invoke((UIStatus) uiCode);
+                        cb.Invoke((UIStatus)uiCode);
                     });
 
                 AndroidTaskUtils.AddOnFailureListener(
@@ -141,7 +139,7 @@ namespace GooglePlayGames.Android
                 AndroidTaskUtils.AddOnSuccessListener<int>(task, uiCode =>
                 {
                     OurUtils.Logger.d("ShowCompareProfileWithAlternativeNameHintsUI result " + uiCode);
-                    cb.Invoke((UIStatus) uiCode);
+                    cb.Invoke((UIStatus)uiCode);
                 });
                 AndroidTaskUtils.AddOnFailureListener(task, exception =>
                 {
@@ -174,7 +172,7 @@ namespace GooglePlayGames.Android
                 AndroidTaskUtils.AddOnSuccessListener<int>(task, uiCode =>
                 {
                     OurUtils.Logger.d("AskForLoadFriendsResolution result " + uiCode);
-                    cb.Invoke((UIStatus) uiCode);
+                    cb.Invoke((UIStatus)uiCode);
                 });
 
                 AndroidTaskUtils.AddOnFailureListener(task, exception =>
@@ -197,7 +195,7 @@ namespace GooglePlayGames.Android
                     task,
                     result =>
                     {
-                        SelectUIStatus status = (SelectUIStatus) result.Get<int>("status");
+                        SelectUIStatus status = (SelectUIStatus)result.Get<int>("status");
                         OurUtils.Logger.d("ShowSelectSnapshotUI result " + status);
 
                         AndroidJavaObject javaMetadata = result.Get<AndroidJavaObject>("metadata");

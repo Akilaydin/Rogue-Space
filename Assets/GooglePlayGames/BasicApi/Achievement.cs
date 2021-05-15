@@ -72,8 +72,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// Indicates whether this achievement is incremental.
         /// </summary>
-        public bool IsIncremental
-        {
+        public bool IsIncremental {
             get { return mIsIncremental; }
 
             set { mIsIncremental = value; }
@@ -82,8 +81,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The number of steps the user has gone towards unlocking this achievement.
         /// </summary>
-        public int CurrentSteps
-        {
+        public int CurrentSteps {
             get { return mCurrentSteps; }
 
             set { mCurrentSteps = value; }
@@ -92,8 +90,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The total number of steps needed to unlock this achievement.
         /// </summary>
-        public int TotalSteps
-        {
+        public int TotalSteps {
             get { return mTotalSteps; }
 
             set { mTotalSteps = value; }
@@ -102,8 +99,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// Indicates whether the achievement is unlocked or not.
         /// </summary>
-        public bool IsUnlocked
-        {
+        public bool IsUnlocked {
             get { return mIsUnlocked; }
 
             set { mIsUnlocked = value; }
@@ -112,8 +108,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// Indicates whether the achievement is revealed or not (hidden).
         /// </summary>
-        public bool IsRevealed
-        {
+        public bool IsRevealed {
             get { return mIsRevealed; }
 
             set { mIsRevealed = value; }
@@ -122,8 +117,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The ID string of this achievement.
         /// </summary>
-        public string Id
-        {
+        public string Id {
             get { return mId; }
 
             set { mId = value; }
@@ -132,8 +126,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The description of this achievement.
         /// </summary>
-        public string Description
-        {
+        public string Description {
             get { return this.mDescription; }
 
             set { mDescription = value; }
@@ -142,8 +135,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The name of this achievement.
         /// </summary>
-        public string Name
-        {
+        public string Name {
             get { return this.mName; }
 
             set { mName = value; }
@@ -156,22 +148,19 @@ namespace GooglePlayGames.BasicApi
         /// The value is invalid (-1 long) if the achievement state has
         /// never been updated.
         /// </remarks>
-        public DateTime LastModifiedTime
-        {
+        public DateTime LastModifiedTime {
             get { return UnixEpoch.AddMilliseconds(mLastModifiedTime); }
 
-            set
-            {
+            set {
                 TimeSpan ts = value - UnixEpoch;
-                mLastModifiedTime = (long) ts.TotalMilliseconds;
+                mLastModifiedTime = (long)ts.TotalMilliseconds;
             }
         }
 
         /// <summary>
         /// The number of experience points earned for unlocking this Achievement.
         /// </summary>
-        public ulong Points
-        {
+        public ulong Points {
             get { return mPoints; }
 
             set { mPoints = value; }
@@ -180,8 +169,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The URL to the image to display when the achievement is revealed.
         /// </summary>
-        public string RevealedImageUrl
-        {
+        public string RevealedImageUrl {
             get { return mRevealedImageUrl; }
 
             set { mRevealedImageUrl = value; }
@@ -190,8 +178,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// The URL to the image to display when the achievement is unlocked.
         /// </summary>
-        public string UnlockedImageUrl
-        {
+        public string UnlockedImageUrl {
             get { return mUnlockedImageUrl; }
 
             set { mUnlockedImageUrl = value; }

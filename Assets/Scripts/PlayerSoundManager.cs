@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
@@ -19,7 +17,7 @@ public class PlayerSoundManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
 
     public AudioSource GetAudioByClipName(string clipName)
     {
@@ -27,8 +25,8 @@ public class PlayerSoundManager : MonoBehaviour
         foreach (var aud in playerAudioSources)
         {
             if (aud.clip.name == clipName)
-            {                
-               return aud;
+            {
+                return aud;
             }
         }
         return null;

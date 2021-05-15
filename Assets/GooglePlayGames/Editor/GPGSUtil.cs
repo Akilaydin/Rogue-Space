@@ -115,10 +115,8 @@ namespace GooglePlayGames.Editor
         /// <summary>
         /// The root path of the Google Play Games plugin
         /// </summary>
-        public static string RootPath
-        {
-            get
-            {
+        public static string RootPath {
+            get {
                 if (string.IsNullOrEmpty(mRootPath))
                 {
                     string[] dirs = Directory.GetDirectories("Assets", RootFolderName, SearchOption.AllDirectories);
@@ -160,8 +158,7 @@ namespace GooglePlayGames.Editor
         /// <summary>
         /// The game info file path.  This is a generated file.
         /// </summary>
-        private static string GameInfoPath
-        {
+        private static string GameInfoPath {
             get { return SlashesToPlatformSeparator(Path.Combine(RootPath, GameInfoRelativePath)); }
         }
 
@@ -170,8 +167,7 @@ namespace GooglePlayGames.Editor
         /// </summary>
         /// <remarks>The Games SDK requires additional metadata in the AndroidManifest.xml
         ///     file. </remarks>
-        private static string ManifestPath
-        {
+        private static string ManifestPath {
             get { return SlashesToPlatformSeparator(Path.Combine(RootPath, ManifestRelativePath)); }
         }
 
@@ -334,7 +330,7 @@ namespace GooglePlayGames.Editor
                 throw new Exception("cannot be empty");
             }
 
-            string[] parts = s.Split(new char[] {'.'});
+            string[] parts = s.Split(new char[] { '.' });
             foreach (string p in parts)
             {
                 char[] bytes = p.ToCharArray();
@@ -588,7 +584,7 @@ namespace GooglePlayGames.Editor
             EnsureDirExists(dirName);
             foreach (DictionaryEntry ent in resourceKeys)
             {
-                string key = MakeIdentifier((string) ent.Key);
+                string key = MakeIdentifier((string)ent.Key);
                 constantsValues += "        public const string " +
                                    key + " = \"" + ent.Value + "\"; // <GPGSID>\n";
             }

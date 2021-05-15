@@ -18,8 +18,6 @@
 
 namespace GooglePlayGames.BasicApi
 {
-    using System;
-
     /// <summary>
     /// Player stats. See https://developers.google.com/games/services/android/stats
     /// </summary>
@@ -75,40 +73,35 @@ namespace GooglePlayGames.BasicApi
         /// <remarks>
         /// Note that a PlayerStats with all stats unset may still be valid.
         /// </remarks>
-        public bool Valid
-        {
+        public bool Valid {
             get { return mValid; }
         }
 
         /// <summary>
         /// The number of in-app purchases.
         /// </summary>
-        public int NumberOfPurchases
-        {
+        public int NumberOfPurchases {
             get { return mNumberOfPurchases; }
         }
 
         /// <summary>
         /// The length of the avg session in minutes.
         /// </summary>
-        public float AvgSessionLength
-        {
+        public float AvgSessionLength {
             get { return mAvgSessionLength; }
         }
 
         /// <summary>
         /// The days since last played.
         /// </summary>
-        public int DaysSinceLastPlayed
-        {
+        public int DaysSinceLastPlayed {
             get { return mDaysSinceLastPlayed; }
         }
 
         /// <summary>
         /// The number of sessions based on sign-ins.
         /// </summary>
-        public int NumberOfSessions
-        {
+        public int NumberOfSessions {
             get { return mNumberOfSessions; }
         }
 
@@ -122,8 +115,7 @@ namespace GooglePlayGames.BasicApi
         /// Higher numbers indicate that this player has played more sessions.
         /// A return value less than zero indicates this value is not available.
         /// </remarks>
-        public float SessPercentile
-        {
+        public float SessPercentile {
             get { return mSessPercentile; }
         }
 
@@ -137,8 +129,7 @@ namespace GooglePlayGames.BasicApi
         /// numbers indicate that this player has spent more.
         /// A return value less than zero indicates this value is not available.
         /// </remarks>
-        public float SpendPercentile
-        {
+        public float SpendPercentile {
             get { return mSpendPercentile; }
         }
 
@@ -150,8 +141,7 @@ namespace GooglePlayGames.BasicApi
         ///  Higher values indicate that a player is more likely to spend.
         /// A return value less than zero indicates this value is not available.
         /// </remarks>
-        public float SpendProbability
-        {
+        public float SpendProbability {
             get { return mSpendProbability; }
         }
 
@@ -162,24 +152,21 @@ namespace GooglePlayGames.BasicApi
         /// Higher values indicate that a player is less likely to return.
         /// A return value less than zero indicates this value is not available.
         /// </remarks>
-        public float ChurnProbability
-        {
+        public float ChurnProbability {
             get { return mChurnProbability; }
         }
 
         /// <summary>
         /// The high spender probability of this player.
         /// </summary>
-        public float HighSpenderProbability
-        {
+        public float HighSpenderProbability {
             get { return mHighSpenderProbability; }
         }
 
         /// <summary>
         /// The predicted total spend of this player over the next 28 days.
         /// </summary>
-        public float TotalSpendNext28Days
-        {
+        public float TotalSpendNext28Days {
             get { return mTotalSpendNext28Days; }
         }
 
@@ -189,7 +176,7 @@ namespace GooglePlayGames.BasicApi
         /// <returns><c>true</c> if this instance has NumberOfPurchases; otherwise, <c>false</c>.</returns>
         public bool HasNumberOfPurchases()
         {
-            return NumberOfPurchases != (int) UNSET_VALUE;
+            return NumberOfPurchases != (int)UNSET_VALUE;
         }
 
         /// <summary>
@@ -207,7 +194,7 @@ namespace GooglePlayGames.BasicApi
         /// <returns><c>true</c> if this instance has DaysSinceLastPlayed; otherwise, <c>false</c>.</returns>
         public bool HasDaysSinceLastPlayed()
         {
-            return DaysSinceLastPlayed != (int) UNSET_VALUE;
+            return DaysSinceLastPlayed != (int)UNSET_VALUE;
         }
 
         /// <summary>
@@ -216,7 +203,7 @@ namespace GooglePlayGames.BasicApi
         /// <returns><c>true</c> if this instance has NumberOfSessions; otherwise, <c>false</c>.</returns>
         public bool HasNumberOfSessions()
         {
-            return NumberOfSessions != (int) UNSET_VALUE;
+            return NumberOfSessions != (int)UNSET_VALUE;
         }
 
         /// <summary>

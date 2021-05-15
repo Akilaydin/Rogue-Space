@@ -2,11 +2,11 @@
 
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Collections.Generic;
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.Events;
     using GooglePlayGames.OurUtils;
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     internal class AndroidEventsClient : IEventsClient
@@ -117,7 +117,7 @@ namespace GooglePlayGames.Android
 
         public void IncrementEvent(string eventId, uint stepsToIncrement)
         {
-            mEventsClient.Call("increment", eventId, (int) stepsToIncrement);
+            mEventsClient.Call("increment", eventId, (int)stepsToIncrement);
         }
 
         private static Action<T1, T2> ToOnGameThread<T1, T2>(Action<T1, T2> toConvert)
@@ -131,7 +131,7 @@ namespace GooglePlayGames.Android
             string name = eventJava.Call<string>("getName");
             string description = eventJava.Call<string>("getDescription");
             string imageUrl = eventJava.Call<string>("getIconImageUrl");
-            ulong currentCount = (ulong) eventJava.Call<long>("getValue");
+            ulong currentCount = (ulong)eventJava.Call<long>("getValue");
             EventVisibility visibility = eventJava.Call<bool>("isVisible")
                 ? EventVisibility.Revealed
                 : EventVisibility.Hidden;

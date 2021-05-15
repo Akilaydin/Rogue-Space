@@ -18,8 +18,6 @@
 
 namespace GooglePlayGames.BasicApi.Nearby
 {
-    using UnityEngine;
-
     public class DummyNearbyConnectionClient : INearbyConnectionClient
     {
         public int MaxUnreliableMessagePayloadLength()

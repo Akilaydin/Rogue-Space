@@ -18,14 +18,14 @@
 
 namespace GooglePlayGames
 {
-    using System;
-    using System.Collections.Generic;
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.Events;
     using GooglePlayGames.BasicApi.Nearby;
     using GooglePlayGames.BasicApi.SavedGame;
     using GooglePlayGames.BasicApi.Video;
     using GooglePlayGames.OurUtils;
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.SocialPlatforms;
 
@@ -94,8 +94,7 @@ namespace GooglePlayGames
         /// <returns>
         /// <c>true</c> if debug log enabled; otherwise, <c>false</c>.
         /// </returns>
-        public static bool DebugLogEnabled
-        {
+        public static bool DebugLogEnabled {
             get { return GooglePlayGames.OurUtils.Logger.DebugLogEnabled; }
 
             set { GooglePlayGames.OurUtils.Logger.DebugLogEnabled = value; }
@@ -107,10 +106,8 @@ namespace GooglePlayGames
         /// <returns>
         /// The instance.
         /// </returns>
-        public static PlayGamesPlatform Instance
-        {
-            get
-            {
+        public static PlayGamesPlatform Instance {
+            get {
                 if (sInstance == null)
                 {
                     GooglePlayGames.OurUtils.Logger.d(
@@ -128,10 +125,8 @@ namespace GooglePlayGames
         /// is complete.
         /// </summary>
         /// <value>The nearby.</value>
-        public static INearbyConnectionClient Nearby
-        {
-            get
-            {
+        public static INearbyConnectionClient Nearby {
+            get {
                 if (sNearbyConnectionClient == null && !sNearbyInitializePending)
                 {
                     sNearbyInitializePending = true;
@@ -144,22 +139,19 @@ namespace GooglePlayGames
 
         /// <summary>Gets the saved game client object.</summary>
         /// <value>The saved game client.</value>
-        public ISavedGameClient SavedGame
-        {
+        public ISavedGameClient SavedGame {
             get { return mClient.GetSavedGameClient(); }
         }
 
         /// <summary>Gets the events client object.</summary>
         /// <value>The events client.</value>
-        public IEventsClient Events
-        {
+        public IEventsClient Events {
             get { return mClient.GetEventsClient(); }
         }
 
         /// <summary>Gets the video client object.</summary>
         /// <value>The video client.</value>
-        public IVideoClient Video
-        {
+        public IVideoClient Video {
             get { return mClient.GetVideoClient(); }
         }
 
@@ -169,8 +161,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The local user.
         /// </returns>
-        public ILocalUser localUser
-        {
+        public ILocalUser localUser {
             get { return mLocalUser; }
         }
 
@@ -808,8 +799,9 @@ namespace GooglePlayGames
             });
         }
 
-        internal static int progressToSteps(double progress, int totalSteps) {
-            return (progress >= 100.0) ? totalSteps : (int) (progress * totalSteps / 100.0);
+        internal static int progressToSteps(double progress, int totalSteps)
+        {
+            return (progress >= 100.0) ? totalSteps : (int)(progress * totalSteps / 100.0);
         }
 
         /// <summary>
@@ -1377,7 +1369,7 @@ namespace GooglePlayGames
                     break;
             }
 
-            ((PlayGamesLeaderboard) board).loading = true;
+            ((PlayGamesLeaderboard)board).loading = true;
             GooglePlayGames.OurUtils.Logger.d("LoadScores, board=" + board +
                                               " callback is " + callback);
             mClient.LoadScores(
@@ -1387,7 +1379,7 @@ namespace GooglePlayGames
                 board.userScope == UserScope.FriendsOnly ? LeaderboardCollection.Social : LeaderboardCollection.Public,
                 timeSpan,
                 (scoreData) => HandleLoadingScores(
-                    (PlayGamesLeaderboard) board, scoreData, callback));
+                    (PlayGamesLeaderboard)board, scoreData, callback));
         }
 
         /// <summary>Asks user to give permissions for the given scopes.</summary>
@@ -1395,7 +1387,7 @@ namespace GooglePlayGames
         /// <param name="callback">Callback used to indicate the outcome of the operation.</param>
         public void RequestPermission(string scope, Action<SignInStatus> callback)
         {
-            RequestPermissions(new string[] {scope}, callback);
+            RequestPermissions(new string[] { scope }, callback);
         }
 
         /// <summary>Asks user to give permissions for the given scopes.</summary>
@@ -1419,7 +1411,7 @@ namespace GooglePlayGames
         /// <returns><c>true</c>, if given, <c>false</c> otherwise.</returns>
         public bool HasPermission(string scope)
         {
-            return HasPermissions(new string[] {scope});
+            return HasPermissions(new string[] { scope });
         }
 
         /// <summary>Returns whether or not user has given permissions for given scopes.</summary>

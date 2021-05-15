@@ -79,35 +79,28 @@ namespace GooglePlayGames
 
         #region IUserProfile implementation
 
-        public string userName
-        {
+        public string userName {
             get { return mDisplayName; }
         }
 
-        public string id
-        {
+        public string id {
             get { return mPlayerId; }
         }
 
-        public string gameId
-        {
+        public string gameId {
             get { return mPlayerId; }
         }
 
-        public bool isFriend
-        {
+        public bool isFriend {
             get { return mIsFriend; }
         }
 
-        public UserState state
-        {
+        public UserState state {
             get { return UserState.Online; }
         }
 
-        public Texture2D image
-        {
-            get
-            {
+        public Texture2D image {
+            get {
                 if (!mImageLoading && mImage == null && !string.IsNullOrEmpty(AvatarURL))
                 {
                     OurUtils.Logger.d("Starting to load image: " + AvatarURL);
@@ -121,8 +114,7 @@ namespace GooglePlayGames
 
         #endregion
 
-        public string AvatarURL
-        {
+        public string AvatarURL {
             get { return mAvatarUrl; }
         }
 

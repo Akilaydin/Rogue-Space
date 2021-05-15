@@ -41,7 +41,7 @@ namespace GooglePlayGames
             mLbId = leaderboardID;
             this.mRank = rank;
             this.mPlayerId = playerId;
-            this.mValue = (long) value;
+            this.mValue = (long)value;
             this.mMetadata = metadata;
         }
 
@@ -59,8 +59,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The leaderboard id.
         /// </returns>
-        public string leaderboardID
-        {
+        public string leaderboardID {
             get { return mLbId; }
 
             set { mLbId = value; }
@@ -72,8 +71,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The value.
         /// </returns>
-        public long value
-        {
+        public long value {
             get { return mValue; }
 
             set { mValue = value; }
@@ -82,33 +80,29 @@ namespace GooglePlayGames
         /// <summary>
         /// Not implemented. Returns Jan 01, 1970, 00:00:00
         /// </summary>
-        public DateTime date
-        {
+        public DateTime date {
             get { return mDate; }
         }
 
         /// <summary>
         /// Not implemented. Returns the value converted to a string, unformatted.
         /// </summary>
-        public string formattedValue
-        {
+        public string formattedValue {
             get { return mValue.ToString(); }
         }
 
         /// <summary>
         /// Not implemented. Returns the empty string.
         /// </summary>
-        public string userID
-        {
+        public string userID {
             get { return mPlayerId; }
         }
 
         /// <summary>
         /// Not implemented. Returns 1.
         /// </summary>
-        public int rank
-        {
-            get { return (int) mRank; }
+        public int rank {
+            get { return (int)mRank; }
         }
 
         /// <summary>
@@ -117,8 +111,7 @@ namespace GooglePlayGames
         /// <returns>
         /// The metaData.
         /// </returns>
-        public string metaData
-        {
+        public string metaData {
             get { return mMetadata; }
         }
     }

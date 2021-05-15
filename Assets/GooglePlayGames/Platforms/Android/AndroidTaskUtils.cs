@@ -3,8 +3,8 @@
 
 namespace GooglePlayGames.Android
 {
-    using UnityEngine;
     using System;
+    using UnityEngine;
 
     class AndroidTaskUtils
     {
@@ -48,7 +48,7 @@ namespace GooglePlayGames.Android
             {
                 if (result is IDisposable)
                 {
-                    using ((IDisposable) result)
+                    using ((IDisposable)result)
                     {
                         mCallback(result);
                     }
@@ -76,7 +76,7 @@ namespace GooglePlayGames.Android
             {
                 if (result is IDisposable && mDisposeResult)
                 {
-                    using ((IDisposable) result)
+                    using ((IDisposable)result)
                     {
                         mCallback(result);
                     }

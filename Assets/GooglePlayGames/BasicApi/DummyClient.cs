@@ -18,8 +18,8 @@
 
 namespace GooglePlayGames.BasicApi
 {
-    using System;
     using GooglePlayGames.OurUtils;
+    using System;
     using UnityEngine.SocialPlatforms;
 
     /// <summary>
@@ -258,49 +258,60 @@ namespace GooglePlayGames.BasicApi
             }
         }
 
-        public void AskForLoadFriendsResolution(Action<UIStatus> callback) {
-          LogUsage();
-          if (callback != null) {
-            callback.Invoke(UIStatus.VersionUpdateRequired);
-          }
+        public void AskForLoadFriendsResolution(Action<UIStatus> callback)
+        {
+            LogUsage();
+            if (callback != null)
+            {
+                callback.Invoke(UIStatus.VersionUpdateRequired);
+            }
         }
 
-        public LoadFriendsStatus GetLastLoadFriendsStatus() {
-          LogUsage();
-          return LoadFriendsStatus.Unknown;
+        public LoadFriendsStatus GetLastLoadFriendsStatus()
+        {
+            LogUsage();
+            return LoadFriendsStatus.Unknown;
         }
 
         public void LoadFriends(int pageSize, bool forceReload,
-                                Action<LoadFriendsStatus> callback) {
-          LogUsage();
-          if (callback != null) {
-            callback.Invoke(LoadFriendsStatus.Unknown);
-          }
+                                Action<LoadFriendsStatus> callback)
+        {
+            LogUsage();
+            if (callback != null)
+            {
+                callback.Invoke(LoadFriendsStatus.Unknown);
+            }
         }
 
-        public void LoadMoreFriends(int pageSize, Action<LoadFriendsStatus> callback) {
-          LogUsage();
-          if (callback != null) {
-            callback.Invoke(LoadFriendsStatus.Unknown);
-          }
+        public void LoadMoreFriends(int pageSize, Action<LoadFriendsStatus> callback)
+        {
+            LogUsage();
+            if (callback != null)
+            {
+                callback.Invoke(LoadFriendsStatus.Unknown);
+            }
         }
 
         public void ShowCompareProfileWithAlternativeNameHintsUI(string userId,
                                                                  string otherPlayerInGameName,
                                                                  string currentPlayerInGameName,
-                                                                 Action<UIStatus> callback) {
-          LogUsage();
-          if (callback != null) {
-            callback.Invoke(UIStatus.VersionUpdateRequired);
-          }
+                                                                 Action<UIStatus> callback)
+        {
+            LogUsage();
+            if (callback != null)
+            {
+                callback.Invoke(UIStatus.VersionUpdateRequired);
+            }
         }
 
         public void GetFriendsListVisibility(bool forceReload,
-                                            Action<FriendsListVisibilityStatus> callback) {
-          LogUsage();
-          if (callback != null) {
-            callback.Invoke(FriendsListVisibilityStatus.Unknown);
-          }
+                                            Action<FriendsListVisibilityStatus> callback)
+        {
+            LogUsage();
+            if (callback != null)
+            {
+                callback.Invoke(FriendsListVisibilityStatus.Unknown);
+            }
         }
 
         /// <summary>

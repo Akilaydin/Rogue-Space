@@ -31,10 +31,8 @@ namespace GooglePlayGames.Editor
     {
         private static GPGSProjectSettings sInstance = null;
 
-        public static GPGSProjectSettings Instance
-        {
-            get
-            {
+        public static GPGSProjectSettings Instance {
+            get {
                 if (sInstance == null)
                 {
                     sInstance = new GPGSProjectSettings();
@@ -83,7 +81,7 @@ namespace GooglePlayGames.Editor
                     }
 
                     line = line.Trim();
-                    string[] p = line.Split(new char[] {'='}, 2);
+                    string[] p = line.Split(new char[] { '=' }, 2);
                     if (p.Length >= 2)
                     {
                         mDict[p[0].Trim()] = p[1].Trim();

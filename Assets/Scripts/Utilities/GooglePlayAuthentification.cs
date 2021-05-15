@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using GooglePlayGames;
+﻿using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using UnityEngine.SocialPlatforms;
+using UnityEngine;
 
 public class GooglePlayAuthentification : MonoBehaviour
 {
 
     public static PlayGamesPlatform gpPlatformInstance;
-   
-    void Awake(){
-        if (gpPlatformInstance == null){
+
+    void Awake()
+    {
+        if (gpPlatformInstance == null)
+        {
             PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
             PlayGamesPlatform.InitializeInstance(configuration);
             PlayGamesPlatform.DebugLogEnabled = true;
@@ -20,12 +19,15 @@ public class GooglePlayAuthentification : MonoBehaviour
 
         }
 
-        Social.Active.localUser.Authenticate(success => 
+        Social.Active.localUser.Authenticate(success =>
         {
-            if (success){
+            if (success)
+            {
                 Debug.Log("Logged in successfully");
 
-            } else {
+            }
+            else
+            {
                 Debug.Log("Failed logging in");
             }
         });

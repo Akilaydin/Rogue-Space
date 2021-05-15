@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +6,8 @@ public class NotificationController : MonoBehaviour
 {
     private int isNotificationOn; //0 stands for off, 1 stands for on;
     private string NOTIFICATIONS = "notifications";
-    public int isNotifOn
-    {
-        get
-        {
+    public int isNotifOn {
+        get {
             return isNotificationOn;
         }
     }
@@ -30,7 +26,7 @@ public class NotificationController : MonoBehaviour
         if (PlayerPrefs.HasKey(NOTIFICATIONS))
         {
             isNotificationOn = PlayerPrefs.GetInt(NOTIFICATIONS, 1);
-            
+
         }
         setImagesToButtons();
     }
@@ -41,7 +37,7 @@ public class NotificationController : MonoBehaviour
         PlayerPrefs.SetInt(NOTIFICATIONS, isNotificationOn);
 
         //TODO: LOGIC FOR NOTIFICATIONS FROM GOOGLE PLAY GAMES
-        
+
         setImagesToButtons();
     }
 

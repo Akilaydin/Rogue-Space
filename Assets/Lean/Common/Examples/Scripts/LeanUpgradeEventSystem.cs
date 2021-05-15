@@ -5,11 +5,11 @@ using UnityEditor;
 
 namespace Lean.Common.Examples
 {
-	/// <summary>This component will automatically update the event system if you switch to using the new <b>InputSystem</b>.</summary>
-	[ExecuteInEditMode]
-	[AddComponentMenu("Lean/Common/Upgrade EventSystem")]
-	public class LeanUpgradeEventSystem : MonoBehaviour
-	{
+    /// <summary>This component will automatically update the event system if you switch to using the new <b>InputSystem</b>.</summary>
+    [ExecuteInEditMode]
+    [AddComponentMenu("Lean/Common/Upgrade EventSystem")]
+    public class LeanUpgradeEventSystem : MonoBehaviour
+    {
 #if UNITY_EDITOR && ENABLE_INPUT_SYSTEM
 		protected virtual void Awake()
 		{
@@ -25,20 +25,20 @@ namespace Lean.Common.Examples
 			}
 		}
 #endif
-	}
+    }
 }
 
 #if UNITY_EDITOR
 namespace Lean.Common.Examples
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(LeanUpgradeEventSystem))]
-	public class LeanUpgradeEventSystem_Editor : LeanInspector<LeanUpgradeEventSystem>
-	{
-		protected override void DrawInspector()
-		{
-			EditorGUILayout.HelpBox("This component will automatically update the event system if you switch to using the new InputSystem.", MessageType.Info);
-		}
-	}
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(LeanUpgradeEventSystem))]
+    public class LeanUpgradeEventSystem_Editor : LeanInspector<LeanUpgradeEventSystem>
+    {
+        protected override void DrawInspector()
+        {
+            EditorGUILayout.HelpBox("This component will automatically update the event system if you switch to using the new InputSystem.", MessageType.Info);
+        }
+    }
 }
 #endif

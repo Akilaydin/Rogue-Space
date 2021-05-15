@@ -16,8 +16,8 @@
 
 namespace GooglePlayGames.BasicApi.Nearby
 {
-    using System;
     using GooglePlayGames.OurUtils;
+    using System;
 
     public enum InitializationStatus
     {
@@ -41,13 +41,11 @@ namespace GooglePlayGames.BasicApi.Nearby
             this.mLocalClientId = localClientId;
         }
 
-        public long LocalClientId
-        {
+        public long LocalClientId {
             get { return mLocalClientId; }
         }
 
-        public Action<InitializationStatus> InitializationCallback
-        {
+        public Action<InitializationStatus> InitializationCallback {
             get { return mInitializationCallback; }
         }
     }

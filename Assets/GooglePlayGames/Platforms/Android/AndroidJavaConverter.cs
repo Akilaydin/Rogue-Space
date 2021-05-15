@@ -18,12 +18,10 @@
 namespace GooglePlayGames.Android
 {
     using GooglePlayGames.BasicApi;
-    using GooglePlayGames.BasicApi.SavedGame;
-    using OurUtils;
-    using UnityEngine;
-    using UnityEngine.SocialPlatforms;
     using System;
     using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.SocialPlatforms;
 
     internal class AndroidJavaConverter
     {
@@ -54,7 +52,7 @@ namespace GooglePlayGames.Android
             switch (collection)
             {
                 case LeaderboardCollection.Social:
-                  return 3 /* COLLECTION_FRIENDS */;
+                    return 3 /* COLLECTION_FRIENDS */;
                 case LeaderboardCollection.Public:
                 default:
                     return 0 /* COLLECTION_PUBLIC */;
@@ -88,18 +86,20 @@ namespace GooglePlayGames.Android
             return new Player(displayName, playerId, avatarUrl);
         }
 
-        internal static PlayerProfile ToPlayerProfile(AndroidJavaObject player) {
-          if (player == null) {
-            return null;
-          }
+        internal static PlayerProfile ToPlayerProfile(AndroidJavaObject player)
+        {
+            if (player == null)
+            {
+                return null;
+            }
 
-          string displayName = player.Call<String>("getDisplayName");
-          string playerId = player.Call<String>("getPlayerId");
-          string avatarUrl = player.Call<String>("getIconImageUrl");
-          bool isFriend =
-              player.Call<AndroidJavaObject>("getRelationshipInfo").Call<int>("getFriendStatus") ==
-              4 /* PlayerFriendStatus.Friend*/;
-          return new PlayerProfile(displayName, playerId, avatarUrl, isFriend);
+            string displayName = player.Call<String>("getDisplayName");
+            string playerId = player.Call<String>("getPlayerId");
+            string avatarUrl = player.Call<String>("getIconImageUrl");
+            bool isFriend =
+                player.Call<AndroidJavaObject>("getRelationshipInfo").Call<int>("getFriendStatus") ==
+                4 /* PlayerFriendStatus.Friend*/;
+            return new PlayerProfile(displayName, playerId, avatarUrl, isFriend);
         }
 
         internal static List<string> ToStringList(AndroidJavaObject stringList)
@@ -132,7 +132,8 @@ namespace GooglePlayGames.Android
             return converted;
         }
 
-        internal static FriendsListVisibilityStatus ToFriendsListVisibilityStatus(int playerListVisibility) {
+        internal static FriendsListVisibilityStatus ToFriendsListVisibilityStatus(int playerListVisibility)
+        {
             switch (playerListVisibility)
             {
                 case /* FriendsListVisibilityStatus.UNKNOWN */ 0:
@@ -148,17 +149,20 @@ namespace GooglePlayGames.Android
             }
         }
 
-        internal static IUserProfile[] playersBufferToArray(AndroidJavaObject playersBuffer) {
-          int count = playersBuffer.Call<int>("getCount");
-          IUserProfile[] users = new IUserProfile[count];
-          for (int i = 0; i < count; ++i) {
-            using (var player = playersBuffer.Call<AndroidJavaObject>("get", i)) {
-              users[i] = AndroidJavaConverter.ToPlayerProfile(player);
+        internal static IUserProfile[] playersBufferToArray(AndroidJavaObject playersBuffer)
+        {
+            int count = playersBuffer.Call<int>("getCount");
+            IUserProfile[] users = new IUserProfile[count];
+            for (int i = 0; i < count; ++i)
+            {
+                using (var player = playersBuffer.Call<AndroidJavaObject>("get", i))
+                {
+                    users[i] = AndroidJavaConverter.ToPlayerProfile(player);
+                }
             }
-          }
 
-          playersBuffer.Call("release");
-          return users;
+            playersBuffer.Call("release");
+            return users;
         }
     }
 }

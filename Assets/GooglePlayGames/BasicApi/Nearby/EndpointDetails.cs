@@ -31,18 +31,15 @@ namespace GooglePlayGames.BasicApi.Nearby
             this.mServiceId = Misc.CheckNotNull(serviceId);
         }
 
-        public string EndpointId
-        {
+        public string EndpointId {
             get { return mEndpointId; }
         }
 
-        public string Name
-        {
+        public string Name {
             get { return mName; }
         }
 
-        public string ServiceId
-        {
+        public string ServiceId {
             get { return mServiceId; }
         }
     }

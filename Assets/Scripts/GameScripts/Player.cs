@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Advertisements;
 
 
 public class Player : MonoBehaviour
@@ -56,11 +54,11 @@ public class Player : MonoBehaviour
         shieldSliderPlayer.fillRect.gameObject.SetActive(false);
         invincibilityDeltaTime = invincibilityDuration / 7;//Getting 5 frames of invincibility.
         playerRenderer = GetComponent<SpriteRenderer>();
-        
-        
-        playerMaxHealth += playerMaxHealth * Database.instance.LoadHpUpgrade();
+
+
+
+        playerMaxHealth = Database.instance.LoadCurrentHP();
         playerHealth = playerMaxHealth;
-        Debug.Log(Database.instance.LoadHpUpgrade() + "hpUpg");
         RefreshHpBar();
 
 
@@ -110,7 +108,8 @@ public class Player : MonoBehaviour
 
 
 
-            if (playerHealth <= 0){
+            if (playerHealth <= 0)
+            {
                 if (playerDestructionSound != null)
                 {
                     playerDestructionSound.Play();
@@ -118,8 +117,10 @@ public class Player : MonoBehaviour
                 else
                 {
                     Debug.Log("pDS == null");
-                }                
-            } else {
+                }
+            }
+            else
+            {
                 if (playerHitSound != null)
                 {
                     playerHitSound.Play();

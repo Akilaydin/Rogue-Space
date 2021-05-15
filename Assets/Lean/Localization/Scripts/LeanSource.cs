@@ -1,48 +1,48 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Lean.Localization
 {
-	/// <summary>This is the base class used for all translation sources. When a translation source is built, it will populate the <b>LeanLocalization</b> class with its translation data.</summary>
-	public abstract class LeanSource : MonoBehaviour
-	{
-		public static LinkedList<LeanSource> Instances = new LinkedList<LeanSource>();
+    /// <summary>This is the base class used for all translation sources. When a translation source is built, it will populate the <b>LeanLocalization</b> class with its translation data.</summary>
+    public abstract class LeanSource : MonoBehaviour
+    {
+        public static LinkedList<LeanSource> Instances = new LinkedList<LeanSource>();
 
-		[System.NonSerialized]
-		private LinkedListNode<LeanSource> node;
+        [System.NonSerialized]
+        private LinkedListNode<LeanSource> node;
 
-		public abstract void Compile(string primaryLanguage, string secondaryLanguage);
+        public abstract void Compile(string primaryLanguage, string secondaryLanguage);
 
-		public void Register()
-		{
-			if (node == null)
-			{
-				node = Instances.AddLast(this);
+        public void Register()
+        {
+            if (node == null)
+            {
+                node = Instances.AddLast(this);
 
-				LeanLocalization.DelayUpdateTranslations();
-			}
-		}
+                LeanLocalization.DelayUpdateTranslations();
+            }
+        }
 
-		public void Unregister()
-		{
-			if (node != null)
-			{
-				Instances.Remove(node);
+        public void Unregister()
+        {
+            if (node != null)
+            {
+                Instances.Remove(node);
 
-				node = null;
+                node = null;
 
-				LeanLocalization.DelayUpdateTranslations();
-			}
-		}
+                LeanLocalization.DelayUpdateTranslations();
+            }
+        }
 
-		protected virtual void OnEnable()
-		{
-			Register();
-		}
+        protected virtual void OnEnable()
+        {
+            Register();
+        }
 
-		protected virtual void OnDisable()
-		{
-			Unregister();
-		}
-	}
+        protected virtual void OnDisable()
+        {
+            Unregister();
+        }
+    }
 }

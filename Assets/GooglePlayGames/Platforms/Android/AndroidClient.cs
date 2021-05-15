@@ -20,12 +20,11 @@
 namespace GooglePlayGames.Android
 {
     using GooglePlayGames.BasicApi;
+    using GooglePlayGames.BasicApi.Events;
     using GooglePlayGames.BasicApi.SavedGame;
+    using GooglePlayGames.BasicApi.Video;
     using GooglePlayGames.OurUtils;
     using System;
-    using System.Collections.Generic;
-    using GooglePlayGames.BasicApi.Events;
-    using GooglePlayGames.BasicApi.Video;
     using UnityEngine;
     using UnityEngine.SocialPlatforms;
 
@@ -619,7 +618,7 @@ namespace GooglePlayGames.Android
 
             using (var gamesClient = getGamesClient())
             using (gamesClient.Call<AndroidJavaObject>("setGravityForPopups",
-                (int) gravity | (int) Gravity.CENTER_HORIZONTAL))
+                (int)gravity | (int)Gravity.CENTER_HORIZONTAL))
                 ;
         }
 
@@ -1086,14 +1085,14 @@ namespace GooglePlayGames.Android
                     long timestamp = leaderboardScore.Call<long>("getTimestampMillis");
                     System.DateTime date = AndroidJavaConverter.ToDateTime(timestamp);
 
-                    ulong rank = (ulong) leaderboardScore.Call<long>("getRank");
+                    ulong rank = (ulong)leaderboardScore.Call<long>("getRank");
                     string scoreHolderId = "";
                     using (var scoreHolder = leaderboardScore.Call<AndroidJavaObject>("getScoreHolder"))
                     {
                         scoreHolderId = scoreHolder.Call<string>("getPlayerId");
                     }
 
-                    ulong score = (ulong) leaderboardScore.Call<long>("getRawScore");
+                    ulong score = (ulong)leaderboardScore.Call<long>("getRawScore");
                     string metadata = leaderboardScore.Call<string>("getScoreTag");
 
                     leaderboardScoreData.AddScore(new PlayGamesScore(date, leaderboardId,
@@ -1114,14 +1113,14 @@ namespace GooglePlayGames.Android
                 if (variant.Call<bool>("hasPlayerInfo"))
                 {
                     System.DateTime date = AndroidJavaConverter.ToDateTime(0);
-                    ulong rank = (ulong) variant.Call<long>("getPlayerRank");
-                    ulong score = (ulong) variant.Call<long>("getRawPlayerScore");
+                    ulong rank = (ulong)variant.Call<long>("getPlayerRank");
+                    ulong score = (ulong)variant.Call<long>("getRawPlayerScore");
                     string metadata = variant.Call<string>("getPlayerScoreTag");
                     leaderboardScoreData.PlayerScore = new PlayGamesScore(date, leaderboardId,
                         rank, mUser.id, score, metadata);
                 }
 
-                leaderboardScoreData.ApproximateCount = (ulong) variant.Call<long>("getNumScores");
+                leaderboardScoreData.ApproximateCount = (ulong)variant.Call<long>("getNumScores");
             }
 
             return leaderboardScoreData;

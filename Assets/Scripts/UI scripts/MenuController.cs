@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
@@ -27,9 +25,10 @@ public class MenuController : MonoBehaviour
         RefreshScoreInMenu();
     }
 
-    public void RefreshScoreInMenu(){
+    public void RefreshScoreInMenu()
+    {
         scoreText.text = Database.instance.LoadGameScore().ToString();
     }
 
-    
+
 }

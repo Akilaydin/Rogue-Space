@@ -2,10 +2,8 @@
 
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Collections.Generic;
-    using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.SavedGame;
+    using System;
     using UnityEngine;
 
     internal class AndroidSnapshotMetadata : ISavedGameMetadata
@@ -28,25 +26,20 @@ namespace GooglePlayGames.Android
             mJavaContents = javaContents;
         }
 
-        public AndroidJavaObject JavaSnapshot
-        {
+        public AndroidJavaObject JavaSnapshot {
             get { return mJavaSnapshot; }
         }
 
-        public AndroidJavaObject JavaMetadata
-        {
+        public AndroidJavaObject JavaMetadata {
             get { return mJavaMetadata; }
         }
 
-        public AndroidJavaObject JavaContents
-        {
+        public AndroidJavaObject JavaContents {
             get { return mJavaContents; }
         }
 
-        public bool IsOpen
-        {
-            get
-            {
+        public bool IsOpen {
+            get {
                 if (mJavaContents == null)
                 {
                     return false;
@@ -56,30 +49,24 @@ namespace GooglePlayGames.Android
             }
         }
 
-        public string Filename
-        {
+        public string Filename {
             get { return mJavaMetadata.Call<string>("getUniqueName"); }
         }
 
-        public string Description
-        {
+        public string Description {
             get { return mJavaMetadata.Call<string>("getDescription"); }
         }
 
-        public string CoverImageURL
-        {
+        public string CoverImageURL {
             get { return mJavaMetadata.Call<string>("getCoverImageUrl"); }
         }
 
-        public TimeSpan TotalTimePlayed
-        {
+        public TimeSpan TotalTimePlayed {
             get { return TimeSpan.FromMilliseconds(mJavaMetadata.Call<long>("getPlayedTime")); }
         }
 
-        public DateTime LastModifiedTimestamp
-        {
-            get
-            {
+        public DateTime LastModifiedTimestamp {
+            get {
                 long timestamp = mJavaMetadata.Call<long>("getLastModifiedTimestamp");
                 System.DateTime lastModifiedTime = AndroidJavaConverter.ToDateTime(timestamp);
                 return lastModifiedTime;

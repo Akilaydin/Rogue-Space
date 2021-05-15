@@ -16,8 +16,6 @@
 
 namespace GooglePlayGames.BasicApi.Nearby
 {
-    using System;
-    using System.Collections.Generic;
     using GooglePlayGames.OurUtils;
 
     public struct AdvertisingResult
@@ -31,18 +29,15 @@ namespace GooglePlayGames.BasicApi.Nearby
             this.mLocalEndpointName = Misc.CheckNotNull(localEndpointName);
         }
 
-        public bool Succeeded
-        {
+        public bool Succeeded {
             get { return mStatus == ResponseStatus.Success; }
         }
 
-        public ResponseStatus Status
-        {
+        public ResponseStatus Status {
             get { return mStatus; }
         }
 
-        public string LocalEndpointName
-        {
+        public string LocalEndpointName {
             get { return mLocalEndpointName; }
         }
     }

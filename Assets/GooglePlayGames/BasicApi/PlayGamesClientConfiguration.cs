@@ -18,7 +18,6 @@
 
 namespace GooglePlayGames.BasicApi
 {
-    using GooglePlayGames.OurUtils;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -98,38 +97,31 @@ namespace GooglePlayGames.BasicApi
         /// enable saved games.
         /// </summary>
         /// <value><c>true</c> if enable saved games; otherwise, <c>false</c>.</value>
-        public bool EnableSavedGames
-        {
+        public bool EnableSavedGames {
             get { return mEnableSavedGames; }
         }
 
-        public bool IsHidingPopups
-        {
+        public bool IsHidingPopups {
             get { return mHidePopups; }
         }
 
-        public bool IsRequestingAuthCode
-        {
+        public bool IsRequestingAuthCode {
             get { return mRequestAuthCode; }
         }
 
-        public bool IsForcingRefresh
-        {
+        public bool IsForcingRefresh {
             get { return mForceRefresh; }
         }
 
-        public bool IsRequestingEmail
-        {
+        public bool IsRequestingEmail {
             get { return mRequestEmail; }
         }
 
-        public bool IsRequestingIdToken
-        {
+        public bool IsRequestingIdToken {
             get { return mRequestIdToken; }
         }
 
-        public string AccountName
-        {
+        public string AccountName {
             get { return mAccountName; }
         }
 
@@ -137,8 +129,7 @@ namespace GooglePlayGames.BasicApi
         /// Gets a array of scopes to be requested from the user.
         /// </summary>
         /// <value>String array of scopes.</value>
-        public string[] Scopes
-        {
+        public string[] Scopes {
             get { return mScopes; }
         }
 
@@ -350,7 +341,7 @@ namespace GooglePlayGames.BasicApi
 
         public override bool Equals(object obj)
         {
-            return this == (PlayGamesClientConfiguration) obj;
+            return this == (PlayGamesClientConfiguration)obj;
         }
     }
 }

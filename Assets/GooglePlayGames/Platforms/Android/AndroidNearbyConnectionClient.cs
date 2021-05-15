@@ -3,11 +3,11 @@
 
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Collections.Generic;
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.Nearby;
     using GooglePlayGames.OurUtils;
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class AndroidNearbyConnectionClient : INearbyConnectionClient

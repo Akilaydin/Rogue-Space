@@ -21,6 +21,6 @@ namespace GooglePlayGames
         // Current Version.
         public const int VersionInt = 0x01012;
         public const string VersionString = "0.10.12";
-        public const string VersionKey = "01012" ;
+        public const string VersionKey = "01012";
     }
 }

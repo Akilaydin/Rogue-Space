@@ -17,12 +17,12 @@
 #if UNITY_ANDROID
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Linq;
     using BasicApi;
     using OurUtils;
-    using UnityEngine;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using UnityEngine;
 
     internal class AndroidTokenClient : TokenClient
     {

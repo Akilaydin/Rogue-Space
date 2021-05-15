@@ -20,33 +20,27 @@
             mVisibility = visibility;
         }
 
-        public string Id
-        {
+        public string Id {
             get { return mId; }
         }
 
-        public string Name
-        {
+        public string Name {
             get { return mName; }
         }
 
-        public string Description
-        {
+        public string Description {
             get { return mDescription; }
         }
 
-        public string ImageUrl
-        {
+        public string ImageUrl {
             get { return mImageUrl; }
         }
 
-        public ulong CurrentCount
-        {
+        public ulong CurrentCount {
             get { return mCurrentCount; }
         }
 
-        public EventVisibility Visibility
-        {
+        public EventVisibility Visibility {
             get { return mVisibility; }
         }
     }

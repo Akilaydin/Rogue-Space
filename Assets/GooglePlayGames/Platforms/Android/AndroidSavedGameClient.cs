@@ -3,12 +3,12 @@
 
 namespace GooglePlayGames.Android
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using GooglePlayGames.BasicApi;
     using GooglePlayGames.BasicApi.SavedGame;
     using GooglePlayGames.OurUtils;
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using UnityEngine;
 
     internal class AndroidSavedGameClient : ISavedGameClient
@@ -183,7 +183,8 @@ namespace GooglePlayGames.Android
 
                 AddOnFailureListenerWithSignOut(
                     task,
-                    exception => {
+                    exception =>
+                    {
                         OurUtils.Logger.d("InternalOpen has failed: " + exception.Call<string>("toString"));
                         var status = mAndroidClient.IsAuthenticated() ?
                             SavedGameRequestStatus.InternalError :
@@ -244,7 +245,7 @@ namespace GooglePlayGames.Android
             }
 
             AndroidHelperFragment.ShowSelectSnapshotUI(
-                showCreateSaveUI, showDeleteSaveUI, (int) maxDisplayedSavedGames, uiTitle, callback);
+                showCreateSaveUI, showDeleteSaveUI, (int)maxDisplayedSavedGames, uiTitle, callback);
         }
 
         public void CommitUpdate(ISavedGameMetadata metadata, SavedGameMetadataUpdate updateForMetadata,
@@ -340,7 +341,8 @@ namespace GooglePlayGames.Android
 
                 AddOnFailureListenerWithSignOut(
                     task,
-                    exception => {
+                    exception =>
+                    {
                         OurUtils.Logger.d("FetchAllSavedGames failed: " + exception.Call<string>("toString"));
                         var status = mAndroidClient.IsAuthenticated() ?
                             SavedGameRequestStatus.InternalError :
@@ -448,7 +450,8 @@ namespace GooglePlayGames.Android
 
                         mAndroidSavedGameClient.AddOnFailureListenerWithSignOut(
                             task,
-                            exception => {
+                            exception =>
+                            {
                                 OurUtils.Logger.d("ResolveConflict failed: " + exception.Call<string>("toString"));
                                 var status = mAndroidSavedGameClient.mAndroidClient.IsAuthenticated() ?
                                     SavedGameRequestStatus.InternalError :
@@ -481,7 +484,8 @@ namespace GooglePlayGames.Android
 
                     mAndroidSavedGameClient.AddOnFailureListenerWithSignOut(
                         task,
-                        exception => {
+                        exception =>
+                        {
                             OurUtils.Logger.d("ChooseMetadata failed: " + exception.Call<string>("toString"));
                             var status = mAndroidSavedGameClient.mAndroidClient.IsAuthenticated() ?
                                 SavedGameRequestStatus.InternalError :

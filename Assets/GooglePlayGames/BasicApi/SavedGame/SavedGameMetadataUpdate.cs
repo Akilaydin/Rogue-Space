@@ -16,8 +16,8 @@
 
 namespace GooglePlayGames.BasicApi.SavedGame
 {
-    using System;
     using GooglePlayGames.OurUtils;
+    using System;
 
     /// <summary>
     /// A struct representing the mutation of saved game metadata. Fields can either have a new value
@@ -42,33 +42,27 @@ namespace GooglePlayGames.BasicApi.SavedGame
             mNewPlayedTime = builder.mNewPlayedTime;
         }
 
-        public bool IsDescriptionUpdated
-        {
+        public bool IsDescriptionUpdated {
             get { return mDescriptionUpdated; }
         }
 
-        public string UpdatedDescription
-        {
+        public string UpdatedDescription {
             get { return mNewDescription; }
         }
 
-        public bool IsCoverImageUpdated
-        {
+        public bool IsCoverImageUpdated {
             get { return mCoverImageUpdated; }
         }
 
-        public byte[] UpdatedPngCoverImage
-        {
+        public byte[] UpdatedPngCoverImage {
             get { return mNewPngCoverImage; }
         }
 
-        public bool IsPlayedTimeUpdated
-        {
+        public bool IsPlayedTimeUpdated {
             get { return mNewPlayedTime.HasValue; }
         }
 
-        public TimeSpan? UpdatedPlayedTime
-        {
+        public TimeSpan? UpdatedPlayedTime {
             get { return mNewPlayedTime; }
         }
 

@@ -31,13 +31,11 @@ namespace GooglePlayGames.BasicApi.Nearby
             this.mPayload = Misc.CheckNotNull(payload);
         }
 
-        public EndpointDetails RemoteEndpoint
-        {
+        public EndpointDetails RemoteEndpoint {
             get { return mRemoteEndpoint; }
         }
 
-        public byte[] Payload
-        {
+        public byte[] Payload {
             get { return mPayload; }
         }
     }

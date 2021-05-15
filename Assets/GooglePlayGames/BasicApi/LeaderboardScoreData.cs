@@ -49,52 +49,44 @@ namespace GooglePlayGames.BasicApi
             mStatus = status;
         }
 
-        public bool Valid
-        {
-            get
-            {
+        public bool Valid {
+            get {
                 return mStatus == ResponseStatus.Success ||
                        mStatus == ResponseStatus.SuccessWithStale;
             }
         }
 
-        public ResponseStatus Status
-        {
+        public ResponseStatus Status {
             get { return mStatus; }
 
             internal set { mStatus = value; }
         }
 
-        public ulong ApproximateCount
-        {
+        public ulong ApproximateCount {
             get { return mApproxCount; }
 
             internal set { mApproxCount = value; }
         }
 
-        public string Title
-        {
+        public string Title {
             get { return mTitle; }
 
             internal set { mTitle = value; }
         }
 
-        public string Id
-        {
+        public string Id {
             get { return mId; }
 
             internal set { mId = value; }
         }
 
-        public IScore PlayerScore
-        {
+        public IScore PlayerScore {
             get { return mPlayerScore; }
 
             internal set { mPlayerScore = value; }
         }
 
-        public IScore[] Scores
-        {
+        public IScore[] Scores {
             get { return mScores.ToArray(); }
         }
 
@@ -104,15 +96,13 @@ namespace GooglePlayGames.BasicApi
             return mScores.Count;
         }
 
-        public ScorePageToken PrevPageToken
-        {
+        public ScorePageToken PrevPageToken {
             get { return mPrevPage; }
 
             internal set { mPrevPage = value; }
         }
 
-        public ScorePageToken NextPageToken
-        {
+        public ScorePageToken NextPageToken {
             get { return mNextPage; }
 
             internal set { mNextPage = value; }
