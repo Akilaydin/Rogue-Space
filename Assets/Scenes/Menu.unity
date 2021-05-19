@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 260952460}
   - component: {fileID: 260952462}
   - component: {fileID: 260952461}
+  - component: {fileID: 260952463}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -599,6 +600,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260952459}
   m_CullTransparentMesh: 0
+--- !u!114 &260952463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260952459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: BackTranslation
+  FallbackText: Back
 --- !u!1 &303693821
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &370852916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1060,6 +1075,7 @@ GameObject:
   - component: {fileID: 425643490}
   - component: {fileID: 425643492}
   - component: {fileID: 425643491}
+  - component: {fileID: 425643493}
   m_Layer: 5
   m_Name: DamageLevelText
   m_TagString: Untagged
@@ -1119,7 +1135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:100"
+  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:"
 --- !u!222 &425643492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1128,6 +1144,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425643489}
   m_CullTransparentMesh: 0
+--- !u!114 &425643493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425643489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Level
+  FallbackText: Level
+--- !u!1 &445791018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445791019}
+  - component: {fileID: 445791020}
+  m_Layer: 0
+  m_Name: Cost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445791019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445791018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138924076}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &445791020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445791018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Cost:'
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:"
+    Object: {fileID: 0}
 --- !u!1 &540124342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2861,6 +2942,7 @@ GameObject:
   - component: {fileID: 1194622957}
   - component: {fileID: 1194622959}
   - component: {fileID: 1194622958}
+  - component: {fileID: 1194622960}
   m_Layer: 5
   m_Name: FireRateCostText
   m_TagString: Untagged
@@ -2920,7 +3002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:10"
+  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:"
 --- !u!222 &1194622959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2929,6 +3011,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194622956}
   m_CullTransparentMesh: 0
+--- !u!114 &1194622960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194622956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Cost
+  FallbackText: Cost
 --- !u!1 &1203674853
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,6 +3138,7 @@ GameObject:
   - component: {fileID: 1235967163}
   - component: {fileID: 1235967165}
   - component: {fileID: 1235967164}
+  - component: {fileID: 1235967166}
   m_Layer: 5
   m_Name: FireRateLevelText
   m_TagString: Untagged
@@ -3101,7 +3198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:100"
+  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:"
 --- !u!222 &1235967165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3110,6 +3207,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235967162}
   m_CullTransparentMesh: 0
+--- !u!114 &1235967166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235967162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Level
+  FallbackText: 'Level:'
 --- !u!1 &1236967024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3326,7 @@ GameObject:
   - component: {fileID: 1237901590}
   - component: {fileID: 1237901592}
   - component: {fileID: 1237901591}
+  - component: {fileID: 1237901593}
   m_Layer: 5
   m_Name: DamageCurrent
   m_TagString: Untagged
@@ -3274,7 +3386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:100"
+  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:"
 --- !u!222 &1237901592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3283,6 +3395,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237901589}
   m_CullTransparentMesh: 0
+--- !u!114 &1237901593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237901589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Current
+  FallbackText: Current
+--- !u!1 &1241354355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241354356}
+  - component: {fileID: 1241354357}
+  m_Layer: 0
+  m_Name: Current
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1241354356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241354355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138924076}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241354357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241354355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Current:'
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:"
+    Object: {fileID: 0}
 --- !u!1 &1305281776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,6 +3507,7 @@ GameObject:
   - component: {fileID: 1315472779}
   - component: {fileID: 1315472781}
   - component: {fileID: 1315472780}
+  - component: {fileID: 1315472782}
   m_Layer: 5
   m_Name: HPCurrent
   m_TagString: Untagged
@@ -3389,7 +3567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:100"
+  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:"
 --- !u!222 &1315472781
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3398,6 +3576,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315472778}
   m_CullTransparentMesh: 0
+--- !u!114 &1315472782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315472778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Current
+  FallbackText: Current
+--- !u!1 &1318617800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318617801}
+  - component: {fileID: 1318617802}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1318617801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318617800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138924076}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318617802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318617800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Level:'
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:"
+    Object: {fileID: 0}
 --- !u!1 &1338146772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,6 +4544,7 @@ GameObject:
   - component: {fileID: 1686264385}
   - component: {fileID: 1686264387}
   - component: {fileID: 1686264386}
+  - component: {fileID: 1686264388}
   m_Layer: 5
   m_Name: DamageCostText
   m_TagString: Untagged
@@ -4360,7 +4604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:100"
+  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:"
 --- !u!222 &1686264387
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4369,6 +4613,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686264384}
   m_CullTransparentMesh: 0
+--- !u!114 &1686264388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686264384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Cost
+  FallbackText: Cost
 --- !u!1 &1698007652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5037,6 +5295,7 @@ GameObject:
   - component: {fileID: 1970576420}
   - component: {fileID: 1970576422}
   - component: {fileID: 1970576421}
+  - component: {fileID: 1970576423}
   m_Layer: 5
   m_Name: FireRateCurrent
   m_TagString: Untagged
@@ -5096,7 +5355,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:10"
+  m_Text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439:"
 --- !u!222 &1970576422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5105,6 +5364,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970576419}
   m_CullTransparentMesh: 0
+--- !u!114 &1970576423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970576419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Current
+  FallbackText: 'Current:'
 --- !u!1 &1976986660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5116,6 +5389,7 @@ GameObject:
   - component: {fileID: 1976986661}
   - component: {fileID: 1976986663}
   - component: {fileID: 1976986662}
+  - component: {fileID: 1976986664}
   m_Layer: 5
   m_Name: HPCostText
   m_TagString: Untagged
@@ -5175,7 +5449,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:1009\n"
+  m_Text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C:"
 --- !u!222 &1976986663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5184,6 +5458,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976986660}
   m_CullTransparentMesh: 0
+--- !u!114 &1976986664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976986660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Cost
+  FallbackText: Cost
 --- !u!1 &1983647227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,6 +5760,7 @@ GameObject:
   - component: {fileID: 2122411685}
   - component: {fileID: 2122411687}
   - component: {fileID: 2122411686}
+  - component: {fileID: 2122411688}
   m_Layer: 5
   m_Name: HPLevelText
   m_TagString: Untagged
@@ -5531,7 +5820,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:100"
+  m_Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:"
 --- !u!222 &2122411687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5540,6 +5829,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122411684}
   m_CullTransparentMesh: 0
+--- !u!114 &2122411688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122411684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Level
+  FallbackText: Level
 --- !u!1 &2122553422
 GameObject:
   m_ObjectHideFlags: 0
@@ -5705,6 +6008,9 @@ Transform:
   - {fileID: 938814245}
   - {fileID: 422716824}
   - {fileID: 1420426244}
+  - {fileID: 1241354356}
+  - {fileID: 445791019}
+  - {fileID: 1318617801}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

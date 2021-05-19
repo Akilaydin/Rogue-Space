@@ -30,15 +30,24 @@ public class UpgradesController : MonoBehaviour
     private Text fireRateCostText, fireRateLevelText, fireRateCurrentText;
 
 
-    private string upgradeLevelTemplate = "Уровень:";
-    private string upgradeCostTemplate = "Стоимость:";
-    private string currentUpgradeTemplate = "Текущий:";
+    private string upgradeLevelTemplateRussian = "Уровень:";
+    private string upgradeCostTemplateRussian = "Стоимость:";
+    private string currentUpgradeTemplateRussian = "Текущий:";
+
+    private string upgradeLevelTemplateEnglish = "Level:";
+    private string upgradeCostTemplateEnglish = "Cost:";
+    private string currentUpgradeTemplateEnglish = "Current:";
+
+    private string upgradeLevelTemplate = "Level:"; //Determines in the SetLanguageToTemplates() method. 
+    private string upgradeCostTemplate = "Cost:"; //Determines in the SetLanguageToTemplates() method. 
+    private string currentUpgradeTemplate = "Current:"; //Determines in the SetLanguageToTemplates() method. 
 
     private int totalScore;
 
     private void Start()
     {
         totalScore = Database.instance.LoadGameScore();
+        SetLanguageToTemplates();
         UpgradeLevelOfDamage();
         UpgradeLevelOfFireRate();
         UpgradeLevelOfHP();
@@ -107,13 +116,34 @@ public class UpgradesController : MonoBehaviour
         }
     }
 
-
-
+    private void SetLanguageToTemplates()
+    {
+        if (Application.systemLanguage == SystemLanguage.Russian)
+        {
+            upgradeLevelTemplate = upgradeLevelTemplateRussian;
+            upgradeCostTemplate = upgradeCostTemplateRussian;
+            currentUpgradeTemplate = currentUpgradeTemplateRussian;
+        }
+        else 
+        {
+            upgradeLevelTemplate = upgradeLevelTemplateEnglish;
+            upgradeCostTemplate = upgradeCostTemplateEnglish;
+            currentUpgradeTemplate = currentUpgradeTemplateEnglish;
+        }
+    }
+    void OnEnable()
+    {
+        UpgradeLevelOfDamage();
+        UpgradeLevelOfFireRate();
+        UpgradeLevelOfHP();
+        Debug.Log("ddasd");
+    }
     private void UpgradeLevelOfHP()
     {
-        hpCurrentText.text = currentUpgradeTemplate + Database.instance.LoadCurrentHP().ToString();
-        hpCostText.text = upgradeCostTemplate + Database.instance.LoadHpUpgradeCost().ToString();
-        hpLevelText.text = upgradeLevelTemplate + Database.instance.LoadHpUpgradeLevel().ToString();
+       
+            hpCurrentText.text = currentUpgradeTemplate + Database.instance.LoadCurrentHP().ToString();
+            hpCostText.text = upgradeCostTemplate + Database.instance.LoadHpUpgradeCost().ToString();
+            hpLevelText.text = upgradeLevelTemplate + Database.instance.LoadHpUpgradeLevel().ToString();
     }
 
     private void UpgradeLevelOfDamage()

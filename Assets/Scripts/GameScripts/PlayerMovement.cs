@@ -47,9 +47,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            if (EventSystem.current.IsPointerOverGameObject()) //Checks if pointer is over the UI object to prevent the ship movement when user touches pause button.
+            if (EventSystem.current.currentSelectedGameObject != null) //Checks if pointer is over the UI object to prevent the ship movement when user touches pause button.
             {
-                Debug.Log("Not PointerOver");
+                Debug.Log("dd");
                 return;
             }
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(mousePosition.x, mousePosition.y + fingerInputOffset), playerSpeed * Time.deltaTime);
